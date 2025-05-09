@@ -19,7 +19,7 @@ This guide will show you how to deploy and use Singularity within a Docker conta
   - [Volume Mounts and Data Persistence](#volume-mounts-and-data-persistence)
   - [Running and Managing Containers](#running-and-managing-containers)
   - [Using the Singularity API](#using-the-singularity-api)
-  - [**Caveats \& Tips**](#caveats--tips)
+  - [Caveats \& Tips](#caveats--tips)
   - [Troubleshooting and FAQ](#troubleshooting-and-faq)
   - [Additional Resources](#additional-resources)
   - [Conclusion](#conclusion)
@@ -127,7 +127,7 @@ More information on building and pushing Docker images can be found in the [Dock
 
 > TLDR: In essence, the script acts as a flexible bootstrapper for the Singularity containers, adapting the startup behavior based on environment variables and ensuring a consistent operational environment.
 
-One unique feature that I've added to the image is the [`ENTRYPOINT` script](../Utilities/docker/scripts/entrypoint.sh), serving as the initial process, accepting commands, that runs when a Docker container starts. Its primary functions are:
+One unique feature that I've added to the image is the [`ENTRYPOINT` script](../Utilities/docker/scripts), serving as the initial process, accepting commands, that runs when a Docker container starts. Its primary functions are:
 
 1. **Environment Configuration**:
     - It ensures that the `DATABASE_CONNECTION_STRING` environment variable is properly set. It checks for `DATABASE_CONNECTION_STRING` or a fallback `DB_STRING` passed from the Docker environment (e.g., via `docker-compose.yml` or `.env` file).
@@ -316,7 +316,7 @@ Check out the [Singularity API Reference](https://data-programs.gitbook.io/singu
 
 ---
 
-## **Caveats \& Tips**
+## Caveats \& Tips
 
 - **Permissions:**
 Ensure the Docker container user has read/write access to the mounted directory.
