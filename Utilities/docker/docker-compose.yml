@@ -1,0 +1,67 @@
+name: singularity-instance
+services:
+  db:
+    container_name: Main-DB
+    image: postgres:17
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -h localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-singularity}
+    volumes:
+      - ${APP_DIR:-.}/postgres_db:/var/lib/postgresql/data
+      - ${APP_DIR:-.}/sample_data:/data
+    ports:
+      - ${DB_PORT:-5433}:5432
+    networks:
+      - db-net
+
+  singularity_init:
+    container_name: Singularity-INIT
+    image: my-image-test:latest
+    environment:
+      # Tell the entrypoint script to run the init command
+      RUN_SINGULARITY_INIT: "true"
+      DB_HOSTNAME: db # Ensure this matches the db service name
+      # POSTGRES_USER, POSTGRES_PASSWORD, DB_NAME inherited from .env or Dockerfile defaults
+    restart: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      # Specify which network to use. Should match the db service network
+      - db-net
+
+  singularity_api:
+    container_name: SingularityAPI
+    image: my-image-test:latest
+    volumes:
+      - ${APP_DIR:-.}/config:/home/appuser/config
+      - ${APP_DIR:-.}/sample_data:/data
+    # This command will be passed to the entrypoint script via 'exec "$@"'
+    command: singularity run api --bind :9090
+    ports:
+      - ${SINGULARITY_API_PORT:-9090}:9090
+    environment:
+      DB_HOSTNAME: db # Ensure this matches the db service name
+      # Pass necessary DB connection details (can also rely on defaults set in Dockerfile ENV)
+      # POSTGRES_USER, POSTGRES_PASSWORD, DB_NAME inherited from .env or Dockerfile defaults
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+      singularity_init:
+        # Wait for the init service to complete successfully
+        condition: service_completed_successfully
+    networks:
+      # Specify which network to use. Should match the db service network
+      - db-net
+
+networks:
+  db-net:
+    driver: bridge

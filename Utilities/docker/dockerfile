@@ -1,0 +1,74 @@
+# Use the prebuilt Singularity image as the base
+FROM ghcr.io/data-preservation-programs/singularity:main
+
+
+# Switch to root for installing dependencies and setting up the environment
+USER root
+
+# Copy the entrypoint script into the image
+COPY ./scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
+
+# Make it executable
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Install additional tools (e.g., nano)
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y nano && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set user and group IDs as build arguments
+ARG PUID=1000
+ARG PGID=1000
+ARG UMASK=022
+
+# Set properties and permissions for user `appdata`
+RUN groupadd -g ${PGID} appgroup && \
+    useradd -m -u ${PUID} -g ${PGID} -s /bin/bash appuser && \
+    mkdir -p /data && \
+    chown -R appuser:appgroup /data
+
+# change ownership of the entrypoint script to the appuser
+RUN chown appuser:appgroup /usr/local/bin/entrypoint.sh
+
+# Set the PATH to include /app for the appuser
+# this is so we can call singularity globally without needing to specify the full path
+ENV PATH="/app:${PATH}"
+
+# Set ARGs for build-time variables
+ARG POSTGRES_USER=postgres
+ARG POSTGRES_PASSWORD=postgres
+ARG DB_NAME=singularity
+ARG DB_HOSTNAME=db
+ARG GOLOG_LOG_LEVEL=info
+ARG GOLOG_LOG_FMT=color
+
+# Set ENV variables for runtime
+ENV POSTGRES_USER=${POSTGRES_USER}
+ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+ENV DB_NAME=${DB_NAME}
+ENV DB_HOSTNAME=${DB_HOSTNAME}
+ENV GOLOG_LOG_LEVEL=${GOLOG_LOG_LEVEL}
+ENV GOLOG_LOG_FMT=${GOLOG_LOG_FMT}
+
+
+# Construct the DB strings
+ENV DB_STRING="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOSTNAME}:5432/${DB_NAME}"
+# `DATABASE_CONNECTION_STRING` is the default env variable that singularity looks for to connect to the database
+# I've purposefully commented this out so that a user can override it in docker-compose
+# ENV DATABASE_CONNECTION_STRING="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_CONTAINER_NAME}:5432/${DB_NAME}"
+
+# Persist environment variables in .bashrc for the non-root user
+USER appuser
+RUN echo "umask ${UMASK}" >> /home/appuser/.bashrc && \
+    echo 'export PATH="/app:$PATH"' >> /home/appuser/.bashrc && \
+    echo "export DB_STRING=${DB_STRING}" >> /home/appuser/.bashrc
+
+# Expose volume mounts
+VOLUME ["/data", "/home/appuser/config"]
+
+# Set the working directory for the non-root user
+WORKDIR /home/appuser
+
+# Set the entrypoint as to initialize the singularity database instance
+# and set the predefined environment variables
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
