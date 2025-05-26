@@ -345,7 +345,7 @@ Solution: `sudo chown -R 1000:1000 /absolute/path/to/mydata`
 - How do I update the Singularity image?
   `docker-compose pull && docker-compose up -d`
 - Where to get help?
-  - [Singularity GitHub Issues](https://github.com/filecoin-project/singularity/issues)
+  - [Singularity GitHub Issues](https://github.com/data-preservation-programs/singularity/issues)
   - [Filecoin Community Forums](https://discuss.filecoin.io/)
   - [Singularity Community on the Filecoin Slack](https://filecoinproject.slack.com/archives/C05JABREATH)
 
