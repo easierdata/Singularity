@@ -44,6 +44,7 @@ Most of all, you can customize docker images are customizable to suit your speci
 
 Before you begin, make sure you have:
 
+- **Singularity installed** ([installation guide](https://data-programs.gitbook.io/singularity/installation/download-binaries))
 - **Docker** installed ([installation guide](https://docs.docker.com/get-docker/))
 - **Docker Compose** installed ([installation guide](https://docs.docker.com/compose/install/))
 - **Basic command-line skills**
