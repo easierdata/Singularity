@@ -354,6 +354,7 @@ Solution: `sudo chown -R 1000:1000 /absolute/path/to/mydata`
 ## Additional Resources
 
 - [Singularity Documentation](https://data-programs.gitbook.io/singularity)
+- [Singularity GitHub Repository](https://github.com/data-preservation-programs/singularity)
 - [Filecoin Docs](https://docs.filecoin.io/)
 - [Docker Best Practices](https://docs.docker.com/develop/dev-best-practices/)
 
