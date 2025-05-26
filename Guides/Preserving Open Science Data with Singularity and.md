@@ -4,6 +4,8 @@ In today’s fast-changing digital landscape, **data integrity and preservation*
 
 This guide will show you how to deploy and use Singularity within a Docker container environment, leveraging a pre-built [Docker image](https://hub.docker.com/repository/docker/sethdd/singularity/general). We’ll walk through building the image, configuring your environment, running the service with Docker Compose, and using the Singularity API to prepare your data for Filecoin storage.
 
+> If you're a Docker wizard and looking for the docker-compose file, you can find it [here](../Utilities/docker/docker-compose-all-services.yml). Otherwise, this guide is for you! It’s designed to help you get started with Singularity and Docker, even if you have no prior experience with these tools.
+
 ---
 
 ## Table of Contents
