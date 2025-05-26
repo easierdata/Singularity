@@ -23,7 +23,7 @@ services:
 
   singularity_init:
     container_name: Singularity-INIT
-    image: my-image-test:latest
+    image: sethdd/singularity:latest
     environment:
       # Tell the entrypoint script to run the init command
       RUN_SINGULARITY_INIT: "true"
@@ -39,7 +39,7 @@ services:
 
   singularity_api:
     container_name: SingularityAPI
-    image: my-image-test:latest
+    image: sethdd/singularity:latest
     volumes:
       - ${APP_DIR:-.}/config:/home/appuser/config
       - ${APP_DIR:-.}/sample_data:/data
@@ -64,13 +64,14 @@ services:
 
   singularity_contentProvider:
     container_name: singularity_contentProvider
-    image: my-image-test:latest
+    image: sethdd/singularity:latest
     # This command will be passed to the entrypoint script via 'exec "$@"'
     command: singularity run content-provider --http-bind "[::]:7777" --enable-http-piece-metadata --enable-http-piece
     ports:
       - 7777:7777
     environment:
       DB_HOSTNAME: db # Ensure this matches the db service name
+      GOLOG_LOG_LEVEL: info
       # Pass necessary DB connection details (can also rely on defaults set in Dockerfile ENV)
       # POSTGRES_USER, POSTGRES_PASSWORD, DB_NAME inherited from .env or Dockerfile defaults
     restart: always
@@ -86,7 +87,7 @@ services:
 
   singularity_downloadServer:
     container_name: singularity_downloadServer
-    image: my-image-test:latest
+    image: sethdd/singularity:latest
     # This command will be passed to the entrypoint script via 'exec "$@"'
     # IP address should be the host machine's IP address and the port should be the one exposed by the contentProvider service
     command: singularity run download-server --metadata-api "http://<ip-address>:7777" --bind :8888
@@ -94,6 +95,7 @@ services:
       - 8888:8888
     environment:
       DB_HOSTNAME: db # Ensure this matches the db service name
+      GOLOG_LOG_LEVEL: info
       # Pass necessary DB connection details (can also rely on defaults set in Dockerfile ENV)
       # POSTGRES_USER, POSTGRES_PASSWORD, DB_NAME inherited from .env or Dockerfile defaults
     restart: always
@@ -109,7 +111,7 @@ services:
 
   singularity_datasetWorker:
     container_name: singularity_datasetWorker
-    image: my-image-test:latest
+    image: sethdd/singularity:latest
     volumes:
       - ${APP_DIR:-.}/config:/home/appuser/config
       - ${APP_DIR:-.}/sample_data:/data
@@ -117,6 +119,7 @@ services:
     command: singularity run dataset-worker --concurrency 1
     environment:
       DB_HOSTNAME: db # Ensure this matches the db service name
+      GOLOG_LOG_LEVEL: info
       # Pass necessary DB connection details (can also rely on defaults set in Dockerfile ENV)
       # POSTGRES_USER, POSTGRES_PASSWORD, DB_NAME inherited from .env or Dockerfile defaults
     restart: always
@@ -132,11 +135,12 @@ services:
 
   singularity_dealPusher:
     container_name: singularity_dealPusher
-    image: my-image-test:latest
+    image: sethdd/singularity:latest
     # This command will be passed to the entrypoint script via 'exec "$@"'
     command: singularity run deal-pusher
     environment:
       DB_HOSTNAME: db # Ensure this matches the db service name
+      GOLOG_LOG_LEVEL: info
       # Pass necessary DB connection details (can also rely on defaults set in Dockerfile ENV)
       # POSTGRES_USER, POSTGRES_PASSWORD, DB_NAME inherited from .env or Dockerfile defaults
     restart: always
@@ -152,11 +156,12 @@ services:
 
   singularity_dealTracker:
     container_name: singularity_dealTracker
-    image: my-image-test:latest
+    image: sethdd/singularity:latest
     # This command will be passed to the entrypoint script via 'exec "$@"'
     command: singularity run deal-tracker --interval 6h0m0s
     environment:
       DB_HOSTNAME: db # Ensure this matches the db service name
+      GOLOG_LOG_LEVEL: info
       # Pass necessary DB connection details (can also rely on defaults set in Dockerfile ENV)
       # POSTGRES_USER, POSTGRES_PASSWORD, DB_NAME inherited from .env or Dockerfile defaults
     restart: always
