@@ -182,7 +182,7 @@ services:
 
   singularity_init:
     container_name: Singularity-INIT
-    image: my-image-test:latest
+    image: sethdd/singularity:latest
     environment:
       # Tell the entrypoint script to run the init command
       RUN_SINGULARITY_INIT: "true"
@@ -197,7 +197,7 @@ services:
 
   singularity_api:
     container_name: SingularityAPI
-    image: my-image-test:latest
+    image: sethdd/singularity:latest
     volumes:
       - ${APP_DIR:-.}/config:/home/appuser/config
       - ${APP_DIR:-.}/sample_data:/data
