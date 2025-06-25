@@ -1,8 +1,10 @@
 # Preserving Open Science Data with Singularity and Docker: A Step-by-Step Guide
 
-In today’s fast-changing digital landscape, **data integrity and preservation** are more critical than ever. As open science research accelerates, the risk of valuable datasets disappearing grows—making it essential to store, share, and safeguard data for the long term. The [Filecoin](https://filecoin.io/) network offers decentralized, reliable storage, and tools like [Singularity](https://data-programs.gitbook.io/singularity) make onboarding data to Filecoin accessible and efficient.
+In today’s fast-changing digital landscape, **data integrity and preservation** are more critical than ever. As open science research accelerates, the risk of valuable datasets disappearing grows, making it essential to store, share, and safeguard data for the long term. The [Filecoin](https://filecoin.io/) network offers decentralized, reliable storage, and tools like [Singularity](https://data-programs.gitbook.io/singularity) make onboarding data to Filecoin accessible and efficient.
 
 This guide will show you how to deploy and use Singularity within a Docker container environment, leveraging a pre-built [Docker image](https://hub.docker.com/repository/docker/sethdd/singularity/general). We’ll walk through building the image, configuring your environment, running the service with Docker Compose, and using the Singularity API to prepare your data for Filecoin storage.
+
+> If you're a Docker wizard and looking for the docker-compose file, you can find it [here](../Utilities/docker/docker-compose-all-services.yml). Otherwise, this guide is for you! It’s designed to help you get started with Singularity and Docker, even if you have no prior experience with these tools.
 
 ---
 
@@ -34,7 +36,7 @@ Singularity is a robust tool for preparing and packing data into **CAR files** (
 - **Reproducibility:** Ensures consistent environments across teams and deployments.
 - **Scalability:** Easily scale up or down as your data onboarding needs change.
 
-Most of all, you can customize docker images are customizable to suit your specific needs. This alone has helped me quickly get up and running on different systems with a Singularity instance and not having to worry about building the binary, downloading dependencies, setting up my environment, etc.  Automation is key to reproducibility 😉
+Most of all, you can customize Docker images to suit your specific needs. This alone has helped me quickly get up and running on different systems with a Singularity instance, without having to worry about building the binary, downloading dependencies, setting up my environment, etc.  Reproducibility is key to Automation 😉
 
 ---
 
@@ -42,13 +44,14 @@ Most of all, you can customize docker images are customizable to suit your speci
 
 Before you begin, make sure you have:
 
+- **Singularity installed** ([installation guide](https://data-programs.gitbook.io/singularity/installation/download-binaries))
 - **Docker** installed ([installation guide](https://docs.docker.com/get-docker/))
 - **Docker Compose** installed ([installation guide](https://docs.docker.com/compose/install/))
 - **Basic command-line skills**
 
 ## Configuring with .env
 
-I want to start by outlining the `.env` file. The [dockerfile](../Utilities/docker/dockerfile) and [docker-compose file](../Utilities/docker/docker-compose.yml) have been configured with default values for the environment variables but you can override them without editing the files directly. Super helpful when it comes to adding additional singularity service workers to the docker-compose file.
+I want to start by outlining the `.env` file. The [dockerfile](../Utilities/docker/dockerfile) and [docker-compose file](../Utilities/docker/docker-compose.yml) have been configured with default values for the environment variables, but you can override them without editing the files directly. Super helpful when it comes to adding additional Singularity service workers to the Docker-Compose file.
 
 You can copy the contents of the sample `.env` file found [here](../Utilities/docker/.env-example) and get an idea of each variable in the table below.
 
@@ -182,7 +185,7 @@ services:
 
   singularity_init:
     container_name: Singularity-INIT
-    image: my-image-test:latest
+    image: sethdd/singularity:latest
     environment:
       # Tell the entrypoint script to run the init command
       RUN_SINGULARITY_INIT: "true"
@@ -197,7 +200,7 @@ services:
 
   singularity_api:
     container_name: SingularityAPI
-    image: my-image-test:latest
+    image: sethdd/singularity:latest
     volumes:
       - ${APP_DIR:-.}/config:/home/appuser/config
       - ${APP_DIR:-.}/sample_data:/data
@@ -345,7 +348,7 @@ Solution: `sudo chown -R 1000:1000 /absolute/path/to/mydata`
 - How do I update the Singularity image?
   `docker-compose pull && docker-compose up -d`
 - Where to get help?
-  - [Singularity GitHub Issues](https://github.com/filecoin-project/singularity/issues)
+  - [Singularity GitHub Issues](https://github.com/data-preservation-programs/singularity/issues)
   - [Filecoin Community Forums](https://discuss.filecoin.io/)
   - [Singularity Community on the Filecoin Slack](https://filecoinproject.slack.com/archives/C05JABREATH)
 
@@ -354,6 +357,7 @@ Solution: `sudo chown -R 1000:1000 /absolute/path/to/mydata`
 ## Additional Resources
 
 - [Singularity Documentation](https://data-programs.gitbook.io/singularity)
+- [Singularity GitHub Repository](https://github.com/data-preservation-programs/singularity)
 - [Filecoin Docs](https://docs.filecoin.io/)
 - [Docker Best Practices](https://docs.docker.com/develop/dev-best-practices/)
 
