@@ -1,0 +1,14 @@
+# ignore appdata directory in utilities/docker
+
+# ignore all other appdata directories
+Utilities/docker/appdata
+
+# Ignore sync tool project for now
+Utilities/sync-tool
+
+# Ignore `.env` files
+# .env files are used to store environment variables and should not be committed
+.env
+
+# Ignore the downloads directory in car-retrieval
+Utilities/scripts/car-retrieval/downloads
