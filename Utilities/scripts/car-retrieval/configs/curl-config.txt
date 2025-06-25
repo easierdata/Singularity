@@ -1,0 +1,51 @@
+# Curl Configuration File for Singularity Piece Downloads
+# This file contains additional curl options that will be applied to all downloads
+# Usage: ./download-pieces.ps1 -PreparationId 1 -CurlConfigFile "curl-config.txt"
+# Usage: ./download-pieces.sh 1 32 ./downloads --curl-config curl-config.txt
+
+# Retry settings
+retry = 3
+retry-delay = 2
+retry-max-time = 60
+
+# Timeout settings
+connect-timeout = 30
+max-time = 7200
+
+# Connection settings
+max-redirs = 5
+tcp-nodelay
+
+# Progress and output (these will override script defaults if uncommented)
+# silent
+# show-error
+
+# Bandwidth limiting (uncomment to limit download speed)
+# limit-rate = 10M
+
+# Proxy settings (uncomment and modify if needed)
+# proxy = http://proxy.example.com:8080
+# proxy-user = username:password
+
+# User agent
+user-agent = "Singularity-Downloader/1.0"
+
+# Custom headers (add as needed)
+# header = "X-Custom-Header: value"
+
+# SSL/TLS settings (uncomment if needed)
+# insecure
+# cacert = /path/to/ca-bundle.crt
+
+# Compression
+compressed
+
+# Connection settings for better concurrency
+# REMOVED: keepalive-time = 2  # This can cause connection serialization
+# Force fresh connections for each download to ensure true concurrency
+# no-keepalive
+# fresh-connect
+
+# IPv4/IPv6 preference (uncomment if needed)
+# ipv4
+# ipv6

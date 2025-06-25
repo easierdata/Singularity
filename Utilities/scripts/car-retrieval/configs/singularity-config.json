@@ -1,0 +1,17 @@
+{
+  "endpoints": {
+    "api_host": "http://localhost:9090",
+    "download_host": "http://localhost:7777"
+  },
+  "defaults": {
+    "max_concurrent_downloads": 8,
+    "verify_existing": false,
+    "force_redownload": false
+  },
+  "curl": {
+    "config_file": "configs/curl-config.txt",
+    "timeout": 300,
+    "retry_attempts": 3
+  },
+  "description": "Singularity download configuration file. Modify endpoints and defaults as needed."
+}
