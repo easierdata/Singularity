@@ -4,12 +4,12 @@ This directory contains scripts and tools for downloading CAR (Content Addressab
 
 ## Overview
 
-Singularity enables the distribution of CAR (Content Addressable Archive) files utilizing the built-in [Download Server](https://data-programs.gitbook.io/singularity/content-distribution/distribute-car-files#singularity-download-server). Behind the scenes, a user makes a request for a particular **Piece** by the `PieceCid` and the server responds by either:
+Singularity enables the distribution of CAR (Content Addressable Archive) files utilizing the built-in [Download Server](https://data-programs.gitbook.io/singularity/content-distribution/distribute-car-files#singularity-download-server). Behind the scenes, a user requests a particular **Piece** by the `PieceCid` and the server responds by either:
 
 1. Streaming the already prepared CAR file.
-2. Assemble the CAR file on the fly from the original source data.
+2. Assemble the CAR file on the fly from the source data.
 
-In either case, the resulting downloaded is a CAR file, representing the prepared source data in content addressable form.
+In either case, the resulting download is a CAR file, representing the prepared source data in content-addressable form.
 
 This toolset allows you to:
 
@@ -34,7 +34,7 @@ The scripts support multiple ways to configure the Singularity API and download 
 
 ### 1. Configuration File (Recommended for persistent setups)
 
-The provided Shell and PowerShell scripts will automatically reference the configuration file [./configs/singularity-config.json](./configs/singularity-config.json) if no command line parameters are provided. This allows for easy customization of API endpoints, download hosts, and other settings without modifying the scripts directly.
+The provided Shell and PowerShell scripts will automatically reference the configuration file [./configs/singularity-config.json](./configs/singularity-config.json) if no command line parameters are provided. This allows for easy customization of API endpoints, download hosts, and other settings without requiring direct modification of the scripts.
 
 The Docker container automatically includes default configuration files in the `configs/` directory. When you mount a volume to `/app/configs`, the container's entrypoint script will populate it with default configurations if it's empty.
 
@@ -60,7 +60,7 @@ Create or modify `configs/singularity-config.json`:
 }
 ```
 
-> **Note**: The `curl-config.txt` file can be used to specify additional curl options for advanced users. This simply allows you to customize the curl behavior without modifying the main scripts. For example, you can set timeouts, retries, or other curl options.
+> **Note**: The `curl-config.txt` file can be used to specify additional curl options for advanced users. This allows you to customize the curl behavior without modifying the main scripts. For example, you can set timeouts, retries, or other curl options.
 
 ### 2. Environment Variables (Good for Docker/CI environments)
 
@@ -149,13 +149,13 @@ docker exec -it singularity-downloader sh -c 'export SINGULARITY_API_HOST="http:
 # Method 2: Use command line parameters
 docker exec -it singularity-downloader ./download-pieces.sh 1 32 /downloads --api-host "http://custom-api:9090" --download-host "http://custom-download:7777"
 
-# Method 3: Modify the config file on host and it will be reflected in container
+# Method 3: Modify the config file on the host, and it will be reflected in the container
 # Edit ./configs/singularity-config.json on your host machine
 # Then run downloads normally in the container
 docker exec -it singularity-downloader ./download-pieces.sh 1
 ```
 
-Additionally, you can modify the `docker-compose.yml` file to set environment variables and custom command to run when the container starts:
+Additionally, you can modify the `docker-compose.yml` file to set environment variables and a custom command to run when the container starts:
 
 ```yaml
 services:
@@ -164,7 +164,7 @@ services:
       ...
 ```
 
-The above command will run the download script with preparation ID 1, 8 concurrent downloads, and store files in `/downloads` directory inside the container.
+The above command will run the download script with preparation ID 1, 8 concurrent downloads, and store files in the `/downloads` directory inside the container.
 
 #### Docker Container Management
 
@@ -178,7 +178,7 @@ docker-compose logs singularity-downloader
 # Restart the container
 docker-compose up -d
 
-# Access container shell
+# Access the container shell
 docker exec -it singularity-downloader bash
 ```
 
@@ -276,7 +276,7 @@ Below are some examples of how to use the scripts effectively, including both ba
 # Download preparation 1 with default settings
 ./download-pieces.sh 1
 
-# Download with 16 concurrent downloads to specific directory
+# Download with 16 concurrent downloads to a specific directory
 ./download-pieces.sh 1 16 /mnt/storage/singularity
 ```
 
@@ -331,7 +331,7 @@ $env:SINGULARITY_DOWNLOAD_HOST="http://production-download:7777"
 
 ### Real-time Monitoring with File Size Tracking
 
-The monitoring script now shows detailed information about active downloads including file sizes:
+The monitoring script now shows detailed information about active downloads, including file sizes:
 
 ```bash
 # Monitor active downloads
@@ -418,15 +418,15 @@ docker exec -it singularity-downloader pkill curl
 - Use `docker-compose ps` to check status
 - Use `docker-compose logs singularity-downloader` to view logs
 
-**Configuration files not appearing in container**
+**Configuration files not appearing in the container**
 
 - Ensure you're using the volume mount: `./configs:/app/configs`
-- The entrypoint script automatically populates empty volumes
+- The `entrypoint` script automatically populates empty volumes
 - Check with: `docker exec -it singularity-downloader ls -la /app/configs/`
 
 **Volume mount issues on Windows**
 
-- The entrypoint script handles volume mounting issues
+- The `entrypoint` script handles volume mounting issues
 - Configuration files are copied from built-in defaults if volumes are empty
 - Rebuild container if needed: `docker-compose build --no-cache`
 
@@ -501,21 +501,21 @@ By default, the [Singularity download server](https://data-programs.gitbook.io/s
 ### File Size Monitoring
 
 - **Track active download progress** with the monitoring script
-- **Plan bandwidth usage** by monitoring total active download size
+- **Plan bandwidth usage** by monitoring the total active download size
 - **Identify slow downloads** by comparing file sizes over time
 
 ### Optimal Concurrency
 
 - Start with 8-16 concurrent downloads
 - Monitor network utilization
-- Increase gradually if network can handle it
+- Increase gradually if the network can handle it
 - Each piece is ~33GB, so bandwidth is usually the bottleneck
 
 ### Network Optimization
 
 - Use `curl-config.txt` for custom settings
 - Consider bandwidth limiting if needed
-- Ensure stable internet connection
+- Ensure a stable internet connection
 
 ### Storage Considerations
 
@@ -537,7 +537,7 @@ The scripts connect to (configurable):
 
 - Docker Engine
 - Docker Compose
-- All dependencies included in container image
+- All dependencies are included in the container image
 
 ### Native Environment
 
@@ -552,7 +552,7 @@ The scripts connect to (configurable):
 
 - **Automatic configuration setup** when container starts
 - **Volume-aware initialization** populates empty config volumes
-- **Persistent operation** keeps container running for interactive use
+- **Persistent operation** keeps the container running for interactive use
 - **Graceful command handling** supports both interactive and scripted usage
 
 ### Volume Management
@@ -573,4 +573,4 @@ For issues or questions:
 
 ## File Format
 
-Downloaded files are in CAR (Content Addressable aRchive) format, which is a standard format for storing IPLD data. Each file contains piece data that can be used with IPFS/Filecoin networks. If you would like to extract content from the CAR files, you can use tools like [go-car](https://github.com/ipld/go-car).
+The downloaded files are in CAR (Content Addressable aRchive) format, which is a standard format for storing IPLD data. Each file contains piece data that can be used with IPFS/Filecoin networks. If you would like to extract content from the CAR files, you can use tools like [go-car](https://github.com/ipld/go-car).
