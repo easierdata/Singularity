@@ -1,0 +1,36 @@
+{
+  "datasetCollections": [
+    {
+      "name": "dataset1",
+      "type": "size_specific",
+      "file_sizes": [0.5, 1, 173, 174, 175, 1023, 1024, 1025],
+      "description": "Based on the default IPFS `max-file-links` parameter of either 174 or 1024"
+    },
+    {
+      "name": "dataset2",
+      "type": "standard",
+      "small_file_count": 10,
+      "small_file_size": 50,
+      "large_file_size": 1
+    },
+    {
+      "name": "dataset3",
+      "type": "size_specific",
+      "file_sizes": [0.5, 1, 2, 5, 10, 25, 50, 100, 200, 500],
+      "description": "Creates files with specific sizes for testing edge cases"
+    },
+    {
+      "name": "dataset4",
+      "type": "standard",
+      "small_file_count": 50,
+      "small_file_size": 10,
+      "large_file_size": 2
+    },
+    {
+      "name": "dataset5",
+      "type": "size_specific",
+      "file_sizes": [0.1, 0.25, 0.5, 1, 1.5, 2.5, 5.5, 10.5],
+      "description": "Small files with decimal sizes for precision testing"
+    }
+  ]
+}

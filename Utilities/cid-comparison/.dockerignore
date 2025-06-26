@@ -1,0 +1,25 @@
+# Docker build context exclusions
+# Exclude data directory (can be large)
+data/
+# Exclude git files
+.git/
+.gitignore
+# Exclude documentation
+README.md
+*.md
+# Exclude test configurations
+config_test/
+# Exclude Docker files not needed in context
+docker-compose.yml
+Dockerfile.optimized
+# Exclude temporary files
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+# Exclude IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
