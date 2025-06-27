@@ -9,7 +9,7 @@ services:
     #     UMASK: "022"
     #     GOLOG_LOG_LEVEL: info
     #     GOLOG_LOG_FMT: color
-    image: cid-comparison:latest
+    image: sethdd/cid-comparison:latest
     container_name: cid-comparison
     hostname: cid-comparison
     restart: unless-stopped
@@ -19,7 +19,7 @@ services:
       - "8080:8080"    # IPFS Gateway (optional)
     volumes:
       - ./data:/data
-      - ./config_test:/home/appuser/config
+      - ./config:/home/appuser/config
     environment:
       - GOLOG_LOG_LEVEL=info
       - GOLOG_LOG_FMT=color
@@ -29,9 +29,3 @@ services:
       # - CID_AUTO_RUN=prepare-data
     stdin_open: true
     tty: true
-
-volumes:
-  data:
-    driver: local
-  config:
-    driver: local
