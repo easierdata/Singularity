@@ -47,29 +47,10 @@ SINGULARITY_PID=$!
 
 echo "✓ Singularity API started (PID: $SINGULARITY_PID)"
 echo "Waiting for API to be ready..."
-sleep 10
-
-# Check if API is responding
-max_attempts=30
-attempt=0
-while [ $attempt -lt $max_attempts ]; do
-    if curl -s http://localhost:9090/api > /dev/null 2>&1; then
-        echo "✓ Singularity API is ready"
-        break
-    fi
-    sleep 2
-    attempt=$((attempt + 1))
-done
-
-if [ $attempt -eq $max_attempts ]; then
-    echo "✗ Singularity API failed to start or is not responding"
-    kill $SINGULARITY_PID 2>/dev/null || true
-    exit 1
-fi
+sleep 2
 
 echo "Process 3: Extracting Singularity CIDs..."
 # 3. Run a set of curl commands to get the CIDs from the prepared sample data.
-
 # Get CIDs from Singularity API
 cids_response=$(curl -s -X GET http://localhost:9090/api/preparation/1/piece)
 
