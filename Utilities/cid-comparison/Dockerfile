@@ -1,4 +1,3 @@
-# Alpine-based ultra-slim image for maximum size reduction
 FROM ghcr.io/data-preservation-programs/singularity:main AS singularity-source
 
 FROM alpine:latest AS kubo-downloader
@@ -8,29 +7,29 @@ RUN wget -q https://github.com/ipfs/kubo/releases/download/v0.35.0/kubo_v0.35.0_
     tar -xzf kubo_v0.35.0_linux-amd64.tar.gz && \
     strip kubo/ipfs || true
 
-# Final stage: Ultra-minimal Alpine
-FROM alpine:latest
+# Final stage: Debian slim for glibc compatibility
+FROM debian:bookworm-slim
 
-# Install only essential runtime dependencies for Alpine
-RUN apk add --no-cache \
+# Install essential runtime dependencies for Debian
+RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     jq \
     bc \
+    curl \
     ca-certificates \
-    libc6-compat \
     coreutils \
     util-linux \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy binaries
 COPY --from=singularity-source /app/singularity /usr/local/bin/singularity
 COPY --from=kubo-downloader /tmp/kubo/ipfs /usr/local/bin/ipfs
 
-# Create user (Alpine way)
+# Create user (Debian way)
 ARG PUID=1000
 ARG PGID=1000
-RUN addgroup -g ${PGID} appgroup && \
-    adduser -u ${PUID} -G appgroup -h /home/appuser -s /bin/bash -D appuser && \
+RUN groupadd -g ${PGID} appgroup && \
+    useradd -u ${PUID} -g appgroup -m -s /bin/bash appuser && \
     mkdir -p /data /home/appuser/{config,.default-config} && \
     chown -R appuser:appgroup /data /home/appuser
 
