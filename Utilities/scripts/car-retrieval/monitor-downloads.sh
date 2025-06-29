@@ -1,9 +1,16 @@
 #!/bin/bash
 
 # Monitor script to show active downloads
-LOGS_DIR="${1:-/downloads/logs}"
+LOGS_DIR="${1:-./downloads/logs}"
+ROOT_DOWNLOAD_DIR="${2:-./downloads}"
+PREPARATION_ID="${3:-1}"
+
+# Build the preparation download directory path
+PREPARATION_DOWNLOAD_DIR="$ROOT_DOWNLOAD_DIR/preparation-$PREPARATION_ID"
 
 echo "Monitoring downloads in: $LOGS_DIR"
+echo "Root download directory: $ROOT_DOWNLOAD_DIR"
+echo "Preparation download directory: $PREPARATION_DOWNLOAD_DIR"
 echo "Press Ctrl+C to stop monitoring"
 echo
 
@@ -46,7 +53,6 @@ while true; do
         # Show active download file sizes
         echo
         echo "Active download file sizes:"
-        preparation_dir=$(dirname "$LOGS_DIR")/preparation-*
         active_size_total=0
         active_file_count=0
         
@@ -59,46 +65,44 @@ while true; do
                 
                 # If there's a log file but no result file, it's likely still downloading
                 if [ ! -f "$result_file" ]; then
-                    # Look for the corresponding .car file in preparation directories
-                    for prep_dir in $preparation_dir; do
-                        if [ -d "$prep_dir" ]; then
-                            car_file="$prep_dir/$piece_cid.car"
-                            if [ -f "$car_file" ]; then
-                                file_size=$(stat -c%s "$car_file" 2>/dev/null || echo "0")
-                                if [ "$file_size" -gt 0 ]; then
-                                    active_size_total=$((active_size_total + file_size))
-                                    active_file_count=$((active_file_count + 1))
-                                    # Convert bytes to human readable format using shell arithmetic
-                                    if [ "$file_size" -gt 1073741824 ]; then
-                                        # Convert to GB (bytes / 1024^3)
-                                        size_gb=$((file_size / 1073741824))
-                                        size_remainder=$((file_size % 1073741824))
-                                        size_decimal=$((size_remainder * 100 / 1073741824))
-                                        size_display="${size_gb}.$(printf "%02d" $size_decimal)"
-                                        size_unit="GB"
-                                    elif [ "$file_size" -gt 1048576 ]; then
-                                        # Convert to MB (bytes / 1024^2)
-                                        size_mb=$((file_size / 1048576))
-                                        size_remainder=$((file_size % 1048576))
-                                        size_decimal=$((size_remainder * 100 / 1048576))
-                                        size_display="${size_mb}.$(printf "%02d" $size_decimal)"
-                                        size_unit="MB"
-                                    elif [ "$file_size" -gt 1024 ]; then
-                                        # Convert to KB (bytes / 1024)
-                                        size_kb=$((file_size / 1024))
-                                        size_remainder=$((file_size % 1024))
-                                        size_decimal=$((size_remainder * 100 / 1024))
-                                        size_display="${size_kb}.$(printf "%02d" $size_decimal)"
-                                        size_unit="KB"
-                                    else
-                                        size_display=$file_size
-                                        size_unit="bytes"
-                                    fi
-                                    echo "  $piece_cid: ${size_display} ${size_unit}"
+                    # Look for the corresponding .car file in the specific preparation directory
+                    if [ -d "$PREPARATION_DOWNLOAD_DIR" ]; then
+                        car_file="$PREPARATION_DOWNLOAD_DIR/$piece_cid.car"
+                        if [ -f "$car_file" ]; then
+                            file_size=$(stat -c%s "$car_file" 2>/dev/null || echo "0")
+                            if [ "$file_size" -gt 0 ]; then
+                                active_size_total=$((active_size_total + file_size))
+                                active_file_count=$((active_file_count + 1))
+                                # Convert bytes to human readable format using shell arithmetic
+                                if [ "$file_size" -gt 1073741824 ]; then
+                                    # Convert to GB (bytes / 1024^3)
+                                    size_gb=$((file_size / 1073741824))
+                                    size_remainder=$((file_size % 1073741824))
+                                    size_decimal=$((size_remainder * 100 / 1073741824))
+                                    size_display="${size_gb}.$(printf "%02d" $size_decimal)"
+                                    size_unit="GB"
+                                elif [ "$file_size" -gt 1048576 ]; then
+                                    # Convert to MB (bytes / 1024^2)
+                                    size_mb=$((file_size / 1048576))
+                                    size_remainder=$((file_size % 1048576))
+                                    size_decimal=$((size_remainder * 100 / 1048576))
+                                    size_display="${size_mb}.$(printf "%02d" $size_decimal)"
+                                    size_unit="MB"
+                                elif [ "$file_size" -gt 1024 ]; then
+                                    # Convert to KB (bytes / 1024)
+                                    size_kb=$((file_size / 1024))
+                                    size_remainder=$((file_size % 1024))
+                                    size_decimal=$((size_remainder * 100 / 1024))
+                                    size_display="${size_kb}.$(printf "%02d" $size_decimal)"
+                                    size_unit="KB"
+                                else
+                                    size_display=$file_size
+                                    size_unit="bytes"
                                 fi
+                                echo "  $piece_cid: ${size_display} ${size_unit}"
                             fi
                         fi
-                    done
+                    fi
                 fi
             done
         fi
