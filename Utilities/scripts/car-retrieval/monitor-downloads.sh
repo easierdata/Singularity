@@ -26,8 +26,15 @@ while true; do
     # Count result files
     if [ -d "$LOGS_DIR" ]; then
         total_results=$(find "$LOGS_DIR" -name "*.result" -type f 2>/dev/null | wc -l)
-        success_count=$(grep -l "^SUCCESS:" "$LOGS_DIR"/*.result 2>/dev/null | wc -l)
-        failed_count=$(grep -l "^FAILED:" "$LOGS_DIR"/*.result 2>/dev/null | wc -l)
+        
+        # Count success and failed results more reliably
+        success_count=0
+        failed_count=0
+        if [ "$total_results" -gt 0 ]; then
+            # Use find to get result files and then grep each one
+            success_count=$(find "$LOGS_DIR" -name "*.result" -type f -exec grep -l "^SUCCESS:" {} \; 2>/dev/null | wc -l)
+            failed_count=$(find "$LOGS_DIR" -name "*.result" -type f -exec grep -l "^FAILED:" {} \; 2>/dev/null | wc -l)
+        fi
         
         echo "Completed downloads: $total_results"
         echo "  - Successful: $success_count"
