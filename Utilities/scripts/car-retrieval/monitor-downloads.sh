@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Monitor script to show active downloads
-LOGS_DIR="${1:-./downloads/logs}"
-ROOT_DOWNLOAD_DIR="${2:-./downloads}"
-PREPARATION_ID="${3:-1}"
+ROOT_DOWNLOAD_DIR="${1:-./downloads}"
+PREPARATION_ID="${2:-1}"
+LOGS_DIR="${3:-./downloads/logs}"
 
 # Build the preparation download directory path
 PREPARATION_DOWNLOAD_DIR="$ROOT_DOWNLOAD_DIR/preparation-$PREPARATION_ID"
@@ -169,5 +169,5 @@ while true; do
         echo "Logs directory not found: $LOGS_DIR"
     fi
     
-    sleep 2
+    sleep 30
 done
