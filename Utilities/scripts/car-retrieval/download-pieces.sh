@@ -298,7 +298,7 @@ download_piece() {
         local end_time=$(date +%s)
         local duration=$((end_time - start_time))
         echo "Completed download: $piece_cid (took ${duration} seconds)"
-        echo "SUCCESS:$piece_cid:$duration" > "$LOGS_DIR/${piece_cid}.result"
+        echo "SUCCESS:$piece_cid | $((duration / 60)) minutes" > "$LOGS_DIR/${piece_cid}.result"
     else
         local exit_code=$?
         echo "Failed to download: $piece_cid (curl exit code: $exit_code)"
