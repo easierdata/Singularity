@@ -169,21 +169,37 @@ fi
 # Create output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIRECTORY"
 mkdir -p "$LOGS_DIR"
-echo "export LOGS_DIR=\"$LOGS_DIR\"" > ~/.bashrc
+# echo "export LOGS_DIR=\"$LOGS_DIR\"" > ~/.bashrc
 
-# Step 1: Download the JSON file
+# Step 1: Download or use existing JSON file
 JSON_FILENAME="preparation-${PREPARATION_ID}-piece.json"
 JSON_FILEPATH="$OUTPUT_DIRECTORY/$JSON_FILENAME"
 API_URL="$API_HOST/api/preparation/$PREPARATION_ID/piece"
 
-echo "Fetching data from: $API_URL"
-
-if ! curl -s -o "$JSON_FILEPATH" "$API_URL"; then
-    echo "Error: Failed to fetch data from API"
-    exit 1
+# Check if JSON file already exists
+if [ -f "$JSON_FILEPATH" ] && [ "$FORCE_REDOWNLOAD" = false ]; then
+    echo "Using existing JSON file: $JSON_FILEPATH"
+    
+    # Validate that the existing JSON is valid
+    if ! jq empty "$JSON_FILEPATH" 2>/dev/null; then
+        echo "Warning: Existing JSON file is empty, downloading fresh copy..."
+        rm "$JSON_FILEPATH" || true
+    else
+        echo "Existing JSON file is valid, skipping API call"
+    fi
 fi
 
-echo "JSON saved to: $JSON_FILEPATH"
+# Download JSON file only if it doesn't exist or is invalid
+if [ ! -f "$JSON_FILEPATH" ]; then
+    echo "Fetching data from: $API_URL"
+    
+    if ! curl -s -o "$JSON_FILEPATH" "$API_URL"; then
+        echo "Error: Failed to fetch data from API"
+        exit 1
+    fi
+    
+    echo "JSON saved to: $JSON_FILEPATH"
+fi
 
 # Step 2: Parse pieces and validate JSON
 if ! command -v jq &> /dev/null; then
