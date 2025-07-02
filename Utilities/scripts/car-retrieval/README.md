@@ -491,6 +491,29 @@ By default, the [Singularity download server](https://data-programs.gitbook.io/s
 
 ## Performance Tips
 
+### Filtering pieces in the JSON files (Linux/WSL)
+
+If you would like to filter out a subset of the preparation pieces from the generated JSON files, you can use the `jq` command-line tool. For example, to extract the last x `pieces` from the `preparation-1-piece.json`, you can run:
+
+```bash
+jq '.[0].pieces |= .[-x:]' ./preparation-1-piece.json > filtered-pieces.json
+```
+
+This command will take the last `x` pieces from the JSON file, while maintaining the existing structure, and save them to `filtered-pieces.json`. You can then use this filtered file for downloading only the specified pieces.
+
+---
+
+If you would like to filter out CAR files that have already been downloaded, you can use the following command to create a new JSON file that only contains pieces that do not have a corresponding `.car` file in the output directory:
+
+```bash
+jq --arg download_dir "preparation-2" '
+.[0].pieces |= map(select(
+  .pieceCid as $cid |
+  ($download_dir + "/" + $cid + ".car" | test(".*\\.car$")) and
+  ($download_dir + "/" + $cid + ".car" | test("^" + $download_dir + "/.*\\.car$"))
+))' preparation-2/preparation-2-piece.json > filtered-pieces.json
+```
+
 ### Docker Optimization
 
 - **Use persistent containers** instead of restarting for each download
