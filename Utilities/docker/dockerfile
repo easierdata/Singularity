@@ -1,20 +1,19 @@
 # Use the prebuilt Singularity image as the base
-FROM ghcr.io/data-preservation-programs/singularity:main
+FROM ghcr.io/data-preservation-programs/singularity:main AS singularity-source
 
+# Final stage: Debian slim for glibc compatibility
+FROM debian:bullseye-slim
 
 # Switch to root for installing dependencies and setting up the environment
-USER root
-
-# Copy the entrypoint script into the image
-COPY ./scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
-
-# Make it executable
-RUN chmod +x /usr/local/bin/entrypoint.sh
+# USER root
 
 # Install additional tools (e.g., nano)
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y nano && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y nano jq ca-certificates curl && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Copy binaries
+COPY --from=singularity-source /app/singularity /usr/local/bin/singularity
 
 # Set user and group IDs as build arguments
 ARG PUID=1000
@@ -23,12 +22,15 @@ ARG UMASK=022
 
 # Set properties and permissions for user `appdata`
 RUN groupadd -g ${PGID} appgroup && \
-    useradd -m -u ${PUID} -g ${PGID} -s /bin/bash appuser && \
-    mkdir -p /data && \
-    chown -R appuser:appgroup /data
+    useradd -u ${PUID} -g ${PGID} -m -s /bin/bash appuser && \
+    mkdir -p /data /home/appuser/config /home/appuser/scripts && \
+    chown -R appuser:appgroup /data /home/appuser
 
-# change ownership of the entrypoint script to the appuser
-RUN chown appuser:appgroup /usr/local/bin/entrypoint.sh
+# Copy application files
+COPY --chown=appuser:appgroup scripts/entrypoint.sh /home/appuser/scripts/entrypoint.sh
+
+# Set permissions and create convenient symlinks
+RUN chmod +x /home/appuser/scripts/entrypoint.sh /usr/local/bin/*
 
 # Set the PATH to include /app for the appuser
 # this is so we can call singularity globally without needing to specify the full path
@@ -58,6 +60,7 @@ ENV DB_STRING="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOSTNAME}:5
 # ENV DATABASE_CONNECTION_STRING="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_CONTAINER_NAME}:5432/${DB_NAME}"
 
 # Persist environment variables in .bashrc for the non-root user
+ENV PATH="/usr/local/bin:${PATH}"
 USER appuser
 RUN echo "umask ${UMASK}" >> /home/appuser/.bashrc && \
     echo 'export PATH="/app:$PATH"' >> /home/appuser/.bashrc && \
@@ -71,4 +74,4 @@ WORKDIR /home/appuser
 
 # Set the entrypoint as to initialize the singularity database instance
 # and set the predefined environment variables
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["/home/appuser/scripts/entrypoint.sh"]
