@@ -1,5 +1,7 @@
+# Use a build arg so we can easily change the upstream tag
+ARG SINGULARITY_GHCR_TAG=main
 # Use the prebuilt Singularity image as the base
-FROM ghcr.io/data-preservation-programs/singularity:main AS singularity-source
+FROM ghcr.io/data-preservation-programs/singularity:${SINGULARITY_GHCR_TAG} AS singularity-source
 
 # Final stage: Debian slim for glibc compatibility
 FROM debian:bullseye-slim
