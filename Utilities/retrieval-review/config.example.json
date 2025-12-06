@@ -1,0 +1,38 @@
+{
+  "singularity_api": {
+    "base_url": "http://your-singularity-api:9090"
+  },
+  "storage_providers": {
+    "f01234567": {
+      "name": "MyProvider",
+      "retrieval_endpoint": "https://provider.example.com"
+    }
+  },
+  "paths": {
+    "output_dir": "./output",
+    "deals_file": "./output/deals.json",
+    "file_metadata_dir": "./output/file-metadata",
+    "piece_metadata_dir": "./output/piece-metadata",
+    "retrieval_status_dir": "./output/retrieval-status",
+    "error_analysis_dir": "./output/error-analysis",
+    "logs_dir": "./output/logs",
+    "summary_reports_dir": "./output/summary-reports",
+    "piece_status_filename": "final_retrieval_piece_status.json",
+    "cid_status_filename": "final_retrieval_cid_status.json",
+    "piece_status_postprocessed_filename": "final_retrieval_piece_status_postprocessed.json",
+    "cid_status_postprocessed_filename": "final_retrieval_cid_status_postprocessed.json",
+    "summary_report_filename": "summary_report.json",
+    "cid_errors_filename": "cid_status_errors.json",
+    "cid_all_failed_filename": "cid_all_providers_failed.json",
+    "error_patterns_filename": "error_patterns_analysis.json",
+    "cid_errors_summary_filename": "cid_errors_summary.json"
+  },
+  "retrieval_defaults": {
+    "batch_size": 100,
+    "concurrency": 10,
+    "request_timeout": 30
+  },
+  "fetch_defaults": {
+    "concurrency": 20
+  }
+}

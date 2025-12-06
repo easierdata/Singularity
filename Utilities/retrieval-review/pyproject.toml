@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "retrieval-review"
+version = "0.1.0"
+description = "A toolkit for analyzing Filecoin storage deal retrieval performance. Fetches deal metadata from a Singularity API, checks unsealed data retrieval status against storage providers, and generates comprehensive reports on data availability."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Seth Docherty", email = "seth@umd.edu"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.0.0",
+    "requests>=2.31.0",
+    "aiohttp>=3.8.0",
+    "pyarrow>=12.0.0",
+    "tqdm>=4.65.0",
+]
+
+[project.urls]
+Repository = "https://github.com/easierdata/Singularity/"
+
+[tool.hatch.build.targets.wheel]
+packages = ["scripts"]

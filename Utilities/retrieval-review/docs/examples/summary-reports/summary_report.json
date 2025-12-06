@@ -1,0 +1,2625 @@
+{
+  "metadata": {
+    "generated_at": "2025-12-05T17:58:22.845201+00:00",
+    "input_files": {
+      "piece_status": "output\\retrieval-status\\final_retrieval_piece_status_postprocessed.json",
+      "cid_status": "output\\retrieval-status\\final_retrieval_cid_status_postprocessed.json",
+      "deals": "output\\deals.json",
+      "file_metadata_dir": "output\\file-metadata",
+      "piece_metadata_dir": "output\\piece-metadata"
+    },
+    "active_deals_count": 16056
+  },
+  "overall_retrieval": {
+    "counts": {
+      "total_unique_pieces_in_active_deals": 10399,
+      "total_unique_cids_in_active_deals": 847390,
+      "total_piece_retrieval_checks": 13841,
+      "total_cid_retrieval_checks": 1226466
+    },
+    "piece_outcomes": {
+      "success_count": 12734,
+      "failure_count": 1107,
+      "success_rate": 0.92002
+    },
+    "cid_outcomes": {
+      "success_count": 1007560,
+      "failure_count": 218906,
+      "success_rate": 0.821515
+    },
+    "unique_metrics": {
+      "pieces": {
+        "with_any_provider_success": 9321,
+        "all_providers_success": 9292,
+        "all_providers_failed": 1078
+      },
+      "cids": {
+        "with_any_provider_success": 667448,
+        "all_providers_success": 658664,
+        "all_providers_failed": 179942
+      }
+    },
+    "by_filetype": {
+      "h5": {
+        "total_files_in_active_deals": 465481,
+        "success_count": 300454,
+        "failure_count": 165027,
+        "success_rate": 0.64547
+      },
+      "json": {
+        "total_files_in_active_deals": 8,
+        "success_count": 7,
+        "failure_count": 1,
+        "success_rate": 0.875
+      },
+      "pdf": {
+        "total_files_in_active_deals": 6,
+        "success_count": 6,
+        "failure_count": 0,
+        "success_rate": 1.0
+      },
+      "png": {
+        "total_files_in_active_deals": 380460,
+        "success_count": 353121,
+        "failure_count": 27339,
+        "success_rate": 0.928142
+      },
+      "sha256": {
+        "total_files_in_active_deals": 25,
+        "success_count": 25,
+        "failure_count": 0,
+        "success_rate": 1.0
+      },
+      "tif": {
+        "total_files_in_active_deals": 25,
+        "success_count": 25,
+        "failure_count": 0,
+        "success_rate": 1.0
+      },
+      "txt": {
+        "total_files_in_active_deals": 4,
+        "success_count": 4,
+        "failure_count": 0,
+        "success_rate": 1.0
+      },
+      "xml": {
+        "total_files_in_active_deals": 380457,
+        "success_count": 353918,
+        "failure_count": 26539,
+        "success_rate": 0.930244
+      }
+    },
+    "by_filesize_bucket": {
+      "0-1MB": {
+        "total_files_in_active_deals": 761108,
+        "success_count": 707226,
+        "failure_count": 53882,
+        "success_rate": 0.929206
+      },
+      "1-10MB": {
+        "total_files_in_active_deals": 5416,
+        "success_count": 5093,
+        "failure_count": 323,
+        "success_rate": 0.940362
+      },
+      "10-100MB": {
+        "total_files_in_active_deals": 51673,
+        "success_count": 48353,
+        "failure_count": 3320,
+        "success_rate": 0.93575
+      },
+      "100MB-1GB": {
+        "total_files_in_active_deals": 263442,
+        "success_count": 246888,
+        "failure_count": 16554,
+        "success_rate": 0.937163
+      },
+      "1GB+": {
+        "total_files_in_active_deals": 144827,
+        "success_count": 0,
+        "failure_count": 144827,
+        "success_rate": 0.0
+      }
+    },
+    "non_active_deals": {
+      "unique_pieces_not_in_active_deals": 7033,
+      "unique_cids_not_in_active_deals": 471957,
+      "piece_retrieval_checks_not_in_active_deals": 7109,
+      "cid_retrieval_checks_not_in_active_deals": 475600
+    }
+  },
+  "by_preparation": {
+    "1": {
+      "piece_metrics": {
+        "pieces_in_active_deals": 821,
+        "piece_retrieval_checks": 1641,
+        "success_count": 1615,
+        "failure_count": 26,
+        "success_rate": 0.984156,
+        "unique_pieces_with_any_provider_success": 821,
+        "unique_pieces_all_providers_success": 795,
+        "unique_pieces_all_providers_failed": 0
+      },
+      "cid_metrics": {
+        "cids_in_active_deals": 255127,
+        "cid_retrieval_checks": 510193,
+        "success_count": 505438,
+        "failure_count": 4755,
+        "success_rate": 0.99068,
+        "unique_cids_with_any_provider_success": 255127,
+        "unique_cids_all_providers_success": 250372,
+        "unique_cids_all_providers_failed": 0
+      },
+      "by_filetype": {
+        "h5": {
+          "total_files_in_active_deals": 170065,
+          "success_count": 168769,
+          "failure_count": 1296,
+          "success_rate": 0.992379
+        },
+        "json": {
+          "total_files_in_active_deals": 2,
+          "success_count": 2,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "png": {
+          "total_files_in_active_deals": 170060,
+          "success_count": 167972,
+          "failure_count": 2088,
+          "success_rate": 0.987722
+        },
+        "xml": {
+          "total_files_in_active_deals": 170066,
+          "success_count": 168695,
+          "failure_count": 1371,
+          "success_rate": 0.991938
+        }
+      },
+      "by_filesize_bucket": {
+        "0-1MB": {
+          "total_files_in_active_deals": 340238,
+          "success_count": 336779,
+          "failure_count": 3459,
+          "success_rate": 0.989834
+        },
+        "1-10MB": {
+          "total_files_in_active_deals": 2344,
+          "success_count": 2322,
+          "failure_count": 22,
+          "success_rate": 0.990614
+        },
+        "10-100MB": {
+          "total_files_in_active_deals": 25189,
+          "success_count": 25009,
+          "failure_count": 180,
+          "success_rate": 0.992854
+        },
+        "100MB-1GB": {
+          "total_files_in_active_deals": 142422,
+          "success_count": 141328,
+          "failure_count": 1094,
+          "success_rate": 0.992319
+        },
+        "1GB+": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        }
+      },
+      "non_active_deals": {
+        "unique_pieces_not_in_active_deals": 1,
+        "unique_cids_not_in_active_deals": 61,
+        "piece_retrieval_checks_not_in_active_deals": 1,
+        "cid_retrieval_checks_not_in_active_deals": 61
+      }
+    },
+    "2": {
+      "piece_metrics": {
+        "pieces_in_active_deals": 5286,
+        "piece_retrieval_checks": 7907,
+        "success_count": 7895,
+        "failure_count": 12,
+        "success_rate": 0.998482,
+        "unique_pieces_with_any_provider_success": 5277,
+        "unique_pieces_all_providers_success": 5274,
+        "unique_pieces_all_providers_failed": 9
+      },
+      "cid_metrics": {
+        "cids_in_active_deals": 252945,
+        "cid_retrieval_checks": 376901,
+        "success_count": 281357,
+        "failure_count": 95544,
+        "success_rate": 0.746501,
+        "unique_cids_with_any_provider_success": 191595,
+        "unique_cids_all_providers_success": 187566,
+        "unique_cids_all_providers_failed": 61350
+      },
+      "by_filetype": {
+        "h5": {
+          "total_files_in_active_deals": 125641,
+          "success_count": 34062,
+          "failure_count": 91579,
+          "success_rate": 0.271106
+        },
+        "json": {
+          "total_files_in_active_deals": 2,
+          "success_count": 2,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "png": {
+          "total_files_in_active_deals": 125622,
+          "success_count": 123596,
+          "failure_count": 2026,
+          "success_rate": 0.983872
+        },
+        "xml": {
+          "total_files_in_active_deals": 125636,
+          "success_count": 123697,
+          "failure_count": 1939,
+          "success_rate": 0.984567
+        }
+      },
+      "by_filesize_bucket": {
+        "0-1MB": {
+          "total_files_in_active_deals": 251269,
+          "success_count": 247304,
+          "failure_count": 3965,
+          "success_rate": 0.98422
+        },
+        "1-10MB": {
+          "total_files_in_active_deals": 1298,
+          "success_count": 1281,
+          "failure_count": 17,
+          "success_rate": 0.986903
+        },
+        "10-100MB": {
+          "total_files_in_active_deals": 2507,
+          "success_count": 2464,
+          "failure_count": 43,
+          "success_rate": 0.982848
+        },
+        "100MB-1GB": {
+          "total_files_in_active_deals": 30699,
+          "success_count": 30308,
+          "failure_count": 391,
+          "success_rate": 0.987263
+        },
+        "1GB+": {
+          "total_files_in_active_deals": 91128,
+          "success_count": 0,
+          "failure_count": 91128,
+          "success_rate": 0.0
+        }
+      },
+      "non_active_deals": {
+        "unique_pieces_not_in_active_deals": 2714,
+        "unique_cids_not_in_active_deals": 131213,
+        "piece_retrieval_checks_not_in_active_deals": 2763,
+        "cid_retrieval_checks_not_in_active_deals": 133437
+      }
+    },
+    "3": {
+      "piece_metrics": {
+        "pieces_in_active_deals": 3806,
+        "piece_retrieval_checks": 3807,
+        "success_count": 2740,
+        "failure_count": 1067,
+        "success_rate": 0.719727,
+        "unique_pieces_with_any_provider_success": 2739,
+        "unique_pieces_all_providers_success": 2739,
+        "unique_pieces_all_providers_failed": 1067
+      },
+      "cid_metrics": {
+        "cids_in_active_deals": 254210,
+        "cid_retrieval_checks": 254264,
+        "success_count": 145796,
+        "failure_count": 108468,
+        "success_rate": 0.573404,
+        "unique_cids_with_any_provider_success": 145757,
+        "unique_cids_all_providers_success": 145757,
+        "unique_cids_all_providers_failed": 108453
+      },
+      "by_filetype": {
+        "h5": {
+          "total_files_in_active_deals": 84756,
+          "success_count": 22743,
+          "failure_count": 62013,
+          "success_rate": 0.268335
+        },
+        "json": {
+          "total_files_in_active_deals": 1,
+          "success_count": 0,
+          "failure_count": 1,
+          "success_rate": 0.0
+        },
+        "png": {
+          "total_files_in_active_deals": 84752,
+          "success_count": 61527,
+          "failure_count": 23225,
+          "success_rate": 0.725965
+        },
+        "xml": {
+          "total_files_in_active_deals": 84755,
+          "success_count": 61526,
+          "failure_count": 23229,
+          "success_rate": 0.725928
+        }
+      },
+      "by_filesize_bucket": {
+        "0-1MB": {
+          "total_files_in_active_deals": 169507,
+          "success_count": 123053,
+          "failure_count": 46454,
+          "success_rate": 0.725946
+        },
+        "1-10MB": {
+          "total_files_in_active_deals": 428,
+          "success_count": 296,
+          "failure_count": 132,
+          "success_rate": 0.691589
+        },
+        "10-100MB": {
+          "total_files_in_active_deals": 2031,
+          "success_count": 1545,
+          "failure_count": 486,
+          "success_rate": 0.760709
+        },
+        "100MB-1GB": {
+          "total_files_in_active_deals": 28599,
+          "success_count": 20902,
+          "failure_count": 7697,
+          "success_rate": 0.730865
+        },
+        "1GB+": {
+          "total_files_in_active_deals": 53699,
+          "success_count": 0,
+          "failure_count": 53699,
+          "success_rate": 0.0
+        }
+      },
+      "non_active_deals": {
+        "unique_pieces_not_in_active_deals": 3821,
+        "unique_cids_not_in_active_deals": 255159,
+        "piece_retrieval_checks_not_in_active_deals": 3837,
+        "cid_retrieval_checks_not_in_active_deals": 256162
+      }
+    },
+    "4": {
+      "piece_metrics": {
+        "pieces_in_active_deals": 0,
+        "piece_retrieval_checks": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "success_rate": null,
+        "unique_pieces_with_any_provider_success": 0,
+        "unique_pieces_all_providers_success": 0,
+        "unique_pieces_all_providers_failed": 0
+      },
+      "cid_metrics": {
+        "cids_in_active_deals": 0,
+        "cid_retrieval_checks": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "success_rate": null,
+        "unique_cids_with_any_provider_success": 0,
+        "unique_cids_all_providers_success": 0,
+        "unique_cids_all_providers_failed": 0
+      },
+      "by_filetype": {},
+      "by_filesize_bucket": {
+        "0-1MB": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        },
+        "1-10MB": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        },
+        "10-100MB": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        },
+        "100MB-1GB": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        },
+        "1GB+": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        }
+      },
+      "non_active_deals": {
+        "unique_pieces_not_in_active_deals": 1,
+        "unique_cids_not_in_active_deals": 25,
+        "piece_retrieval_checks_not_in_active_deals": 2,
+        "cid_retrieval_checks_not_in_active_deals": 50
+      }
+    },
+    "5": {
+      "piece_metrics": {
+        "pieces_in_active_deals": 0,
+        "piece_retrieval_checks": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "success_rate": null,
+        "unique_pieces_with_any_provider_success": 0,
+        "unique_pieces_all_providers_success": 0,
+        "unique_pieces_all_providers_failed": 0
+      },
+      "cid_metrics": {
+        "cids_in_active_deals": 0,
+        "cid_retrieval_checks": 0,
+        "success_count": 0,
+        "failure_count": 0,
+        "success_rate": null,
+        "unique_cids_with_any_provider_success": 0,
+        "unique_cids_all_providers_success": 0,
+        "unique_cids_all_providers_failed": 0
+      },
+      "by_filetype": {},
+      "by_filesize_bucket": {
+        "0-1MB": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        },
+        "1-10MB": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        },
+        "10-100MB": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        },
+        "100MB-1GB": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        },
+        "1GB+": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        }
+      },
+      "non_active_deals": {
+        "unique_pieces_not_in_active_deals": 10,
+        "unique_cids_not_in_active_deals": 391,
+        "piece_retrieval_checks_not_in_active_deals": 20,
+        "cid_retrieval_checks_not_in_active_deals": 782
+      }
+    },
+    "6": {
+      "piece_metrics": {
+        "pieces_in_active_deals": 1,
+        "piece_retrieval_checks": 1,
+        "success_count": 1,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "unique_pieces_with_any_provider_success": 1,
+        "unique_pieces_all_providers_success": 1,
+        "unique_pieces_all_providers_failed": 0
+      },
+      "cid_metrics": {
+        "cids_in_active_deals": 79,
+        "cid_retrieval_checks": 79,
+        "success_count": 79,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "unique_cids_with_any_provider_success": 79,
+        "unique_cids_all_providers_success": 79,
+        "unique_cids_all_providers_failed": 0
+      },
+      "by_filetype": {
+        "json": {
+          "total_files_in_active_deals": 1,
+          "success_count": 1,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "pdf": {
+          "total_files_in_active_deals": 2,
+          "success_count": 2,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "png": {
+          "total_files_in_active_deals": 26,
+          "success_count": 26,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "sha256": {
+          "total_files_in_active_deals": 25,
+          "success_count": 25,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "tif": {
+          "total_files_in_active_deals": 25,
+          "success_count": 25,
+          "failure_count": 0,
+          "success_rate": 1.0
+        }
+      },
+      "by_filesize_bucket": {
+        "0-1MB": {
+          "total_files_in_active_deals": 28,
+          "success_count": 28,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "1-10MB": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        },
+        "10-100MB": {
+          "total_files_in_active_deals": 26,
+          "success_count": 26,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "100MB-1GB": {
+          "total_files_in_active_deals": 25,
+          "success_count": 25,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "1GB+": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        }
+      },
+      "non_active_deals": {
+        "unique_pieces_not_in_active_deals": 1,
+        "unique_cids_not_in_active_deals": 79,
+        "piece_retrieval_checks_not_in_active_deals": 1,
+        "cid_retrieval_checks_not_in_active_deals": 79
+      }
+    },
+    "7": {
+      "piece_metrics": {
+        "pieces_in_active_deals": 485,
+        "piece_retrieval_checks": 485,
+        "success_count": 483,
+        "failure_count": 2,
+        "success_rate": 0.995876,
+        "unique_pieces_with_any_provider_success": 483,
+        "unique_pieces_all_providers_success": 483,
+        "unique_pieces_all_providers_failed": 2
+      },
+      "cid_metrics": {
+        "cids_in_active_deals": 85029,
+        "cid_retrieval_checks": 85029,
+        "success_count": 74890,
+        "failure_count": 10139,
+        "success_rate": 0.880758,
+        "unique_cids_with_any_provider_success": 74890,
+        "unique_cids_all_providers_success": 74890,
+        "unique_cids_all_providers_failed": 10139
+      },
+      "by_filetype": {
+        "h5": {
+          "total_files_in_active_deals": 85019,
+          "success_count": 74880,
+          "failure_count": 10139,
+          "success_rate": 0.880744
+        },
+        "json": {
+          "total_files_in_active_deals": 2,
+          "success_count": 2,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "pdf": {
+          "total_files_in_active_deals": 4,
+          "success_count": 4,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "txt": {
+          "total_files_in_active_deals": 4,
+          "success_count": 4,
+          "failure_count": 0,
+          "success_rate": 1.0
+        }
+      },
+      "by_filesize_bucket": {
+        "0-1MB": {
+          "total_files_in_active_deals": 66,
+          "success_count": 62,
+          "failure_count": 4,
+          "success_rate": 0.939394
+        },
+        "1-10MB": {
+          "total_files_in_active_deals": 1346,
+          "success_count": 1194,
+          "failure_count": 152,
+          "success_rate": 0.887073
+        },
+        "10-100MB": {
+          "total_files_in_active_deals": 21920,
+          "success_count": 19309,
+          "failure_count": 2611,
+          "success_rate": 0.880885
+        },
+        "100MB-1GB": {
+          "total_files_in_active_deals": 61697,
+          "success_count": 54325,
+          "failure_count": 7372,
+          "success_rate": 0.880513
+        },
+        "1GB+": {
+          "total_files_in_active_deals": 0,
+          "success_count": 0,
+          "failure_count": 0,
+          "success_rate": null
+        }
+      },
+      "non_active_deals": {
+        "unique_pieces_not_in_active_deals": 485,
+        "unique_cids_not_in_active_deals": 85029,
+        "piece_retrieval_checks_not_in_active_deals": 485,
+        "cid_retrieval_checks_not_in_active_deals": 85029
+      }
+    }
+  },
+  "by_storage_provider": {
+    "f02639429": {
+      "providerid": "f02639429",
+      "providername": "Milad",
+      "piece_metrics": {
+        "pieces_in_active_deals": 3453,
+        "piece_retrieval_checks": 3453,
+        "success_count": 3453,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "unique_pieces_with_success": 3453,
+        "unique_pieces_all_checks_failed": 0
+      },
+      "cid_metrics": {
+        "cids_in_active_deals": 379621,
+        "cid_retrieval_checks": 379621,
+        "success_count": 344518,
+        "failure_count": 35103,
+        "success_rate": 0.907531,
+        "unique_cids_with_success": 344518,
+        "unique_cids_all_checks_failed": 35103
+      },
+      "by_filetype": {
+        "h5": {
+          "total_files_in_active_deals": 126519,
+          "success_count": 95826,
+          "failure_count": 30693,
+          "success_rate": 0.757404
+        },
+        "json": {
+          "total_files_in_active_deals": 2,
+          "success_count": 2,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "pdf": {
+          "total_files_in_active_deals": 2,
+          "success_count": 2,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "png": {
+          "total_files_in_active_deals": 126531,
+          "success_count": 123925,
+          "failure_count": 2606,
+          "success_rate": 0.979404
+        },
+        "sha256": {
+          "total_files_in_active_deals": 25,
+          "success_count": 25,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "tif": {
+          "total_files_in_active_deals": 25,
+          "success_count": 25,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "xml": {
+          "total_files_in_active_deals": 126517,
+          "success_count": 124713,
+          "failure_count": 1804,
+          "success_rate": 0.985741
+        }
+      },
+      "by_filesize_bucket": {
+        "0-1MB": {
+          "total_files_in_active_deals": 253108,
+          "success_count": 248698,
+          "failure_count": 4410,
+          "success_rate": 0.982577
+        },
+        "1-10MB": {
+          "total_files_in_active_deals": 1579,
+          "success_count": 1565,
+          "failure_count": 14,
+          "success_rate": 0.991134
+        },
+        "10-100MB": {
+          "total_files_in_active_deals": 13419,
+          "success_count": 13381,
+          "failure_count": 38,
+          "success_rate": 0.997168
+        },
+        "100MB-1GB": {
+          "total_files_in_active_deals": 81217,
+          "success_count": 80874,
+          "failure_count": 343,
+          "success_rate": 0.995777
+        },
+        "1GB+": {
+          "total_files_in_active_deals": 30298,
+          "success_count": 0,
+          "failure_count": 30298,
+          "success_rate": 0.0
+        }
+      },
+      "non_active_deals": {
+        "unique_pieces_not_in_active_deals": 7022,
+        "unique_cids_not_in_active_deals": 471412,
+        "piece_retrieval_checks_not_in_active_deals": 7022,
+        "cid_retrieval_checks_not_in_active_deals": 471412
+      }
+    },
+    "f03493414": {
+      "providerid": "f03493414",
+      "providername": "Dcent",
+      "piece_metrics": {
+        "pieces_in_active_deals": 10388,
+        "piece_retrieval_checks": 10388,
+        "success_count": 9281,
+        "failure_count": 1107,
+        "success_rate": 0.893435,
+        "unique_pieces_with_success": 9281,
+        "unique_pieces_all_checks_failed": 1107
+      },
+      "cid_metrics": {
+        "cids_in_active_deals": 846845,
+        "cid_retrieval_checks": 846845,
+        "success_count": 663042,
+        "failure_count": 183803,
+        "success_rate": 0.782956,
+        "unique_cids_with_success": 663042,
+        "unique_cids_all_checks_failed": 183803
+      },
+      "by_filetype": {
+        "h5": {
+          "total_files_in_active_deals": 338962,
+          "success_count": 204628,
+          "failure_count": 134334,
+          "success_rate": 0.60369
+        },
+        "json": {
+          "total_files_in_active_deals": 6,
+          "success_count": 5,
+          "failure_count": 1,
+          "success_rate": 0.833333
+        },
+        "pdf": {
+          "total_files_in_active_deals": 4,
+          "success_count": 4,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "png": {
+          "total_files_in_active_deals": 253929,
+          "success_count": 229196,
+          "failure_count": 24733,
+          "success_rate": 0.902599
+        },
+        "txt": {
+          "total_files_in_active_deals": 4,
+          "success_count": 4,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "xml": {
+          "total_files_in_active_deals": 253940,
+          "success_count": 229205,
+          "failure_count": 24735,
+          "success_rate": 0.902595
+        }
+      },
+      "by_filesize_bucket": {
+        "0-1MB": {
+          "total_files_in_active_deals": 508000,
+          "success_count": 458528,
+          "failure_count": 49472,
+          "success_rate": 0.902614
+        },
+        "1-10MB": {
+          "total_files_in_active_deals": 3837,
+          "success_count": 3528,
+          "failure_count": 309,
+          "success_rate": 0.919468
+        },
+        "10-100MB": {
+          "total_files_in_active_deals": 38254,
+          "success_count": 34972,
+          "failure_count": 3282,
+          "success_rate": 0.914205
+        },
+        "100MB-1GB": {
+          "total_files_in_active_deals": 182225,
+          "success_count": 166014,
+          "failure_count": 16211,
+          "success_rate": 0.911039
+        },
+        "1GB+": {
+          "total_files_in_active_deals": 114529,
+          "success_count": 0,
+          "failure_count": 114529,
+          "success_rate": 0.0
+        }
+      },
+      "non_active_deals": {
+        "unique_pieces_not_in_active_deals": 87,
+        "unique_cids_not_in_active_deals": 4188,
+        "piece_retrieval_checks_not_in_active_deals": 87,
+        "cid_retrieval_checks_not_in_active_deals": 4188
+      }
+    }
+  },
+  "prepared_content": {
+    "overall": {
+      "cid_metrics": {
+        "total_files": 1624311,
+        "unique_cids": 851033,
+        "retrievable_by_any_provider": 667448,
+        "retrievable_by_all_providers": 658664,
+        "not_retrievable_by_any_provider": 179942,
+        "not_in_any_active_deals": 3643,
+        "by_provider": {
+          "f02639429": {
+            "provider_name": "Milad",
+            "retrievable": 344518,
+            "not_retrievable": 35103,
+            "not_in_deals": 471412
+          },
+          "f03493414": {
+            "provider_name": "Dcent",
+            "retrievable": 663042,
+            "not_retrievable": 183803,
+            "not_in_deals": 4188
+          }
+        }
+      },
+      "piece_metrics": {
+        "total_pieces": 10491,
+        "unique_piece_cids": 10483,
+        "retrievable_by_any_provider": 9321,
+        "retrievable_by_all_providers": 9292,
+        "not_retrievable_by_any_provider": 1078,
+        "not_in_any_active_deals": 84,
+        "by_provider": {
+          "f02639429": {
+            "provider_name": "Milad",
+            "retrievable": 3453,
+            "not_retrievable": 0,
+            "not_in_deals": 7030
+          },
+          "f03493414": {
+            "provider_name": "Dcent",
+            "retrievable": 9281,
+            "not_retrievable": 1107,
+            "not_in_deals": 95
+          }
+        }
+      }
+    },
+    "by_preparation": {
+      "1": {
+        "cid_metrics": {
+          "source_file": "GEDI02_B_prep1_details.csv",
+          "total_files": 255764,
+          "unique_cids": 255128,
+          "retrievable_by_any_provider": 255127,
+          "retrievable_by_all_providers": 250372,
+          "not_retrievable_by_any_provider": 0,
+          "not_in_any_active_deals": 1,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 254199,
+              "not_retrievable": 867,
+              "not_in_deals": 62
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 251239,
+              "not_retrievable": 3888,
+              "not_in_deals": 1
+            }
+          }
+        },
+        "piece_metrics": {
+          "source_file": "GEDI02_B_prep1_details.json",
+          "total_pieces": 825,
+          "unique_piece_cids": 823,
+          "retrievable_by_any_provider": 821,
+          "retrievable_by_all_providers": 795,
+          "not_retrievable_by_any_provider": 0,
+          "not_in_any_active_deals": 2,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 820,
+              "not_retrievable": 0,
+              "not_in_deals": 3
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 795,
+              "not_retrievable": 26,
+              "not_in_deals": 2
+            }
+          }
+        },
+        "by_filetype": {
+          "h5": {
+            "unique_cids": 85043,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 85022,
+                "not_retrievable": 0,
+                "not_in_deals": 21
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 83747,
+                "not_retrievable": 1296,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "json": {
+            "unique_cids": 2,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 1,
+                "not_retrievable": 0,
+                "not_in_deals": 1
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 1,
+                "not_retrievable": 0,
+                "not_in_deals": 1
+              }
+            }
+          },
+          "png": {
+            "unique_cids": 85040,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 84228,
+                "not_retrievable": 792,
+                "not_in_deals": 20
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 83744,
+                "not_retrievable": 1296,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "xml": {
+            "unique_cids": 85043,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 84948,
+                "not_retrievable": 75,
+                "not_in_deals": 20
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 83747,
+                "not_retrievable": 1296,
+                "not_in_deals": 0
+              }
+            }
+          }
+        },
+        "by_filesize_bucket": {
+          "0-1MB": {
+            "unique_cids": 170140,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 169232,
+                "not_retrievable": 867,
+                "not_in_deals": 41
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 167547,
+                "not_retrievable": 2592,
+                "not_in_deals": 1
+              }
+            }
+          },
+          "1-10MB": {
+            "unique_cids": 1172,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 1172,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 1150,
+                "not_retrievable": 22,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "10-100MB": {
+            "unique_cids": 12596,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 12593,
+                "not_retrievable": 0,
+                "not_in_deals": 3
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 12416,
+                "not_retrievable": 180,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "100MB-1GB": {
+            "unique_cids": 71220,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 71202,
+                "not_retrievable": 0,
+                "not_in_deals": 18
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 70126,
+                "not_retrievable": 1094,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "1GB+": {
+            "unique_cids": 0,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              }
+            }
+          }
+        }
+      },
+      "2": {
+        "cid_metrics": {
+          "source_file": "GEDI01_B_prep2_details.csv",
+          "total_files": 258334,
+          "unique_cids": 255169,
+          "retrievable_by_any_provider": 191595,
+          "retrievable_by_all_providers": 187566,
+          "not_retrievable_by_any_provider": 61350,
+          "not_in_any_active_deals": 2224,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 90201,
+              "not_retrievable": 34221,
+              "not_in_deals": 130747
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 191156,
+              "not_retrievable": 61323,
+              "not_in_deals": 2690
+            }
+          }
+        },
+        "piece_metrics": {
+          "source_file": "GEDI01_B_prep2_details.json",
+          "total_pieces": 5340,
+          "unique_piece_cids": 5336,
+          "retrievable_by_any_provider": 5277,
+          "retrievable_by_all_providers": 5274,
+          "not_retrievable_by_any_provider": 9,
+          "not_in_any_active_deals": 50,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 2631,
+              "not_retrievable": 0,
+              "not_in_deals": 2705
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 5264,
+              "not_retrievable": 12,
+              "not_in_deals": 60
+            }
+          }
+        },
+        "by_filetype": {
+          "h5": {
+            "unique_cids": 85057,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 10801,
+                "not_retrievable": 30678,
+                "not_in_deals": 43578
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 23261,
+                "not_retrievable": 60901,
+                "not_in_deals": 895
+              }
+            }
+          },
+          "json": {
+            "unique_cids": 2,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 2
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 2,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "png": {
+            "unique_cids": 85053,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 39653,
+                "not_retrievable": 1814,
+                "not_in_deals": 43586
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 83943,
+                "not_retrievable": 212,
+                "not_in_deals": 898
+              }
+            }
+          },
+          "xml": {
+            "unique_cids": 85057,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 39747,
+                "not_retrievable": 1729,
+                "not_in_deals": 43581
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 83950,
+                "not_retrievable": 210,
+                "not_in_deals": 897
+              }
+            }
+          }
+        },
+        "by_filesize_bucket": {
+          "0-1MB": {
+            "unique_cids": 170119,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 79402,
+                "not_retrievable": 3543,
+                "not_in_deals": 87174
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 167902,
+                "not_retrievable": 422,
+                "not_in_deals": 1795
+              }
+            }
+          },
+          "1-10MB": {
+            "unique_cids": 902,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 393,
+                "not_retrievable": 14,
+                "not_in_deals": 495
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 888,
+                "not_retrievable": 3,
+                "not_in_deals": 11
+              }
+            }
+          },
+          "10-100MB": {
+            "unique_cids": 1722,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 762,
+                "not_retrievable": 38,
+                "not_in_deals": 922
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 1702,
+                "not_retrievable": 5,
+                "not_in_deals": 15
+              }
+            }
+          },
+          "100MB-1GB": {
+            "unique_cids": 20894,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 9644,
+                "not_retrievable": 343,
+                "not_in_deals": 10907
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 20664,
+                "not_retrievable": 48,
+                "not_in_deals": 182
+              }
+            }
+          },
+          "1GB+": {
+            "unique_cids": 61532,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 30283,
+                "not_in_deals": 31249
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 60845,
+                "not_in_deals": 687
+              }
+            }
+          }
+        }
+      },
+      "3": {
+        "cid_metrics": {
+          "source_file": "GEDI02_A_prep3_details.csv",
+          "total_files": 256895,
+          "unique_cids": 255214,
+          "retrievable_by_any_provider": 145757,
+          "retrievable_by_all_providers": 145757,
+          "not_retrievable_by_any_provider": 108453,
+          "not_in_any_active_deals": 1004,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 39,
+              "not_retrievable": 15,
+              "not_in_deals": 255160
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 145757,
+              "not_retrievable": 108453,
+              "not_in_deals": 1004
+            }
+          }
+        },
+        "piece_metrics": {
+          "source_file": "GEDI02_A_prep3_details.json",
+          "total_pieces": 3825,
+          "unique_piece_cids": 3823,
+          "retrievable_by_any_provider": 2739,
+          "retrievable_by_all_providers": 2739,
+          "not_retrievable_by_any_provider": 1067,
+          "not_in_any_active_deals": 17,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 1,
+              "not_retrievable": 0,
+              "not_in_deals": 3822
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 2739,
+              "not_retrievable": 1067,
+              "not_in_deals": 17
+            }
+          }
+        },
+        "by_filetype": {
+          "h5": {
+            "unique_cids": 85073,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 3,
+                "not_retrievable": 15,
+                "not_in_deals": 85055
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 22740,
+                "not_retrievable": 61998,
+                "not_in_deals": 335
+              }
+            }
+          },
+          "json": {
+            "unique_cids": 2,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 2
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 1,
+                "not_in_deals": 1
+              }
+            }
+          },
+          "png": {
+            "unique_cids": 85068,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 18,
+                "not_retrievable": 0,
+                "not_in_deals": 85050
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 61509,
+                "not_retrievable": 23225,
+                "not_in_deals": 334
+              }
+            }
+          },
+          "xml": {
+            "unique_cids": 85071,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 18,
+                "not_retrievable": 0,
+                "not_in_deals": 85053
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 61508,
+                "not_retrievable": 23229,
+                "not_in_deals": 334
+              }
+            }
+          }
+        },
+        "by_filesize_bucket": {
+          "0-1MB": {
+            "unique_cids": 170140,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 36,
+                "not_retrievable": 0,
+                "not_in_deals": 170104
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 123017,
+                "not_retrievable": 46454,
+                "not_in_deals": 669
+              }
+            }
+          },
+          "1-10MB": {
+            "unique_cids": 429,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 429
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 296,
+                "not_retrievable": 132,
+                "not_in_deals": 1
+              }
+            }
+          },
+          "10-100MB": {
+            "unique_cids": 2039,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 2039
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 1545,
+                "not_retrievable": 486,
+                "not_in_deals": 8
+              }
+            }
+          },
+          "100MB-1GB": {
+            "unique_cids": 28686,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 3,
+                "not_retrievable": 0,
+                "not_in_deals": 28683
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 20899,
+                "not_retrievable": 7697,
+                "not_in_deals": 90
+              }
+            }
+          },
+          "1GB+": {
+            "unique_cids": 53920,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 15,
+                "not_in_deals": 53905
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 53684,
+                "not_in_deals": 236
+              }
+            }
+          }
+        }
+      },
+      "4": {
+        "cid_metrics": {
+          "source_file": "GEDI_L4B_Gridded_Biomass_V2_1_2299_prep4_details.csv",
+          "total_files": 62,
+          "unique_cids": 25,
+          "retrievable_by_any_provider": 0,
+          "retrievable_by_all_providers": 0,
+          "not_retrievable_by_any_provider": 0,
+          "not_in_any_active_deals": 25,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 25
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 25
+            }
+          }
+        },
+        "piece_metrics": {
+          "source_file": "GEDI_L4B_Gridded_Biomass_V2_1_2299_prep4_details.json",
+          "total_pieces": 2,
+          "unique_piece_cids": 2,
+          "retrievable_by_any_provider": 0,
+          "retrievable_by_all_providers": 0,
+          "not_retrievable_by_any_provider": 0,
+          "not_in_any_active_deals": 2,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 2
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 2
+            }
+          }
+        },
+        "by_filetype": {
+          "html": {
+            "unique_cids": 1,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 1
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 1
+              }
+            }
+          },
+          "json": {
+            "unique_cids": 3,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 3
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 3
+              }
+            }
+          },
+          "pdf": {
+            "unique_cids": 1,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 1
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 1
+              }
+            }
+          },
+          "sha256": {
+            "unique_cids": 10,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 10
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 10
+              }
+            }
+          },
+          "tif": {
+            "unique_cids": 10,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 10
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 10
+              }
+            }
+          }
+        },
+        "by_filesize_bucket": {
+          "0-1MB": {
+            "unique_cids": 13,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 13
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 13
+              }
+            }
+          },
+          "1-10MB": {
+            "unique_cids": 2,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 2
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 2
+              }
+            }
+          },
+          "10-100MB": {
+            "unique_cids": 5,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 5
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 5
+              }
+            }
+          },
+          "100MB-1GB": {
+            "unique_cids": 5,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 5
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 5
+              }
+            }
+          },
+          "1GB+": {
+            "unique_cids": 0,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              }
+            }
+          }
+        }
+      },
+      "5": {
+        "cid_metrics": {
+          "source_file": "GEDI_L4A_AGB_Density_GW_2028_prep5_details.csv",
+          "total_files": 2318,
+          "unique_cids": 392,
+          "retrievable_by_any_provider": 0,
+          "retrievable_by_all_providers": 0,
+          "not_retrievable_by_any_provider": 0,
+          "not_in_any_active_deals": 392,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 392
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 392
+            }
+          }
+        },
+        "piece_metrics": {
+          "source_file": "GEDI_L4A_AGB_Density_GW_2028_prep5_details.json",
+          "total_pieces": 11,
+          "unique_piece_cids": 11,
+          "retrievable_by_any_provider": 0,
+          "retrievable_by_all_providers": 0,
+          "not_retrievable_by_any_provider": 0,
+          "not_in_any_active_deals": 11,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 11
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 11
+            }
+          }
+        },
+        "by_filetype": {
+          "h5": {
+            "unique_cids": 386,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 386
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 386
+              }
+            }
+          },
+          "json": {
+            "unique_cids": 2,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 2
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 2
+              }
+            }
+          },
+          "pdf": {
+            "unique_cids": 4,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 4
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 4
+              }
+            }
+          }
+        },
+        "by_filesize_bucket": {
+          "0-1MB": {
+            "unique_cids": 5,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 5
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 5
+              }
+            }
+          },
+          "1-10MB": {
+            "unique_cids": 1,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 1
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 1
+              }
+            }
+          },
+          "10-100MB": {
+            "unique_cids": 0,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "100MB-1GB": {
+            "unique_cids": 333,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 333
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 333
+              }
+            }
+          },
+          "1GB+": {
+            "unique_cids": 53,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 53
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 53
+              }
+            }
+          }
+        }
+      },
+      "6": {
+        "cid_metrics": {
+          "source_file": "GEDI_L3_LandSurface_Metrics_V2_1952_prep6_details.csv",
+          "total_files": 777,
+          "unique_cids": 80,
+          "retrievable_by_any_provider": 79,
+          "retrievable_by_all_providers": 79,
+          "not_retrievable_by_any_provider": 0,
+          "not_in_any_active_deals": 1,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 79,
+              "not_retrievable": 0,
+              "not_in_deals": 1
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 80
+            }
+          }
+        },
+        "piece_metrics": {
+          "source_file": "GEDI_L3_LandSurface_Metrics_V2_1952_prep6_details.json",
+          "total_pieces": 2,
+          "unique_piece_cids": 2,
+          "retrievable_by_any_provider": 1,
+          "retrievable_by_all_providers": 1,
+          "not_retrievable_by_any_provider": 0,
+          "not_in_any_active_deals": 1,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 1,
+              "not_retrievable": 0,
+              "not_in_deals": 1
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 2
+            }
+          }
+        },
+        "by_filetype": {
+          "json": {
+            "unique_cids": 2,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 1,
+                "not_retrievable": 0,
+                "not_in_deals": 1
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 2
+              }
+            }
+          },
+          "pdf": {
+            "unique_cids": 2,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 2,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 2
+              }
+            }
+          },
+          "png": {
+            "unique_cids": 26,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 26,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 26
+              }
+            }
+          },
+          "sha256": {
+            "unique_cids": 25,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 25,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 25
+              }
+            }
+          },
+          "tif": {
+            "unique_cids": 25,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 25,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 25
+              }
+            }
+          }
+        },
+        "by_filesize_bucket": {
+          "0-1MB": {
+            "unique_cids": 29,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 28,
+                "not_retrievable": 0,
+                "not_in_deals": 1
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 29
+              }
+            }
+          },
+          "1-10MB": {
+            "unique_cids": 0,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "10-100MB": {
+            "unique_cids": 26,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 26,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 26
+              }
+            }
+          },
+          "100MB-1GB": {
+            "unique_cids": 25,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 25,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 25
+              }
+            }
+          },
+          "1GB+": {
+            "unique_cids": 0,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              }
+            }
+          }
+        }
+      },
+      "7": {
+        "cid_metrics": {
+          "source_file": "GEDI_L4A_AGB_Density_V2_1_2056_prep7_details.csv",
+          "total_files": 850161,
+          "unique_cids": 85029,
+          "retrievable_by_any_provider": 74890,
+          "retrievable_by_all_providers": 74890,
+          "not_retrievable_by_any_provider": 10139,
+          "not_in_any_active_deals": 0,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 85029
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 74890,
+              "not_retrievable": 10139,
+              "not_in_deals": 0
+            }
+          }
+        },
+        "piece_metrics": {
+          "source_file": "GEDI_L4A_AGB_Density_V2_1_2056_prep7_details.json",
+          "total_pieces": 486,
+          "unique_piece_cids": 486,
+          "retrievable_by_any_provider": 483,
+          "retrievable_by_all_providers": 483,
+          "not_retrievable_by_any_provider": 2,
+          "not_in_any_active_deals": 1,
+          "by_provider": {
+            "f02639429": {
+              "provider_name": "Milad",
+              "retrievable": 0,
+              "not_retrievable": 0,
+              "not_in_deals": 486
+            },
+            "f03493414": {
+              "provider_name": "Dcent",
+              "retrievable": 483,
+              "not_retrievable": 2,
+              "not_in_deals": 1
+            }
+          }
+        },
+        "by_filetype": {
+          "h5": {
+            "unique_cids": 85019,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 85019
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 74880,
+                "not_retrievable": 10139,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "json": {
+            "unique_cids": 2,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 2
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 2,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "pdf": {
+            "unique_cids": 4,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 4
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 4,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "txt": {
+            "unique_cids": 4,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 4
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 4,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              }
+            }
+          }
+        },
+        "by_filesize_bucket": {
+          "0-1MB": {
+            "unique_cids": 66,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 66
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 62,
+                "not_retrievable": 4,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "1-10MB": {
+            "unique_cids": 1346,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 1346
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 1194,
+                "not_retrievable": 152,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "10-100MB": {
+            "unique_cids": 21920,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 21920
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 19309,
+                "not_retrievable": 2611,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "100MB-1GB": {
+            "unique_cids": 61697,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 61697
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 54325,
+                "not_retrievable": 7372,
+                "not_in_deals": 0
+              }
+            }
+          },
+          "1GB+": {
+            "unique_cids": 0,
+            "by_provider": {
+              "f02639429": {
+                "provider_name": "Milad",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              },
+              "f03493414": {
+                "provider_name": "Dcent",
+                "retrievable": 0,
+                "not_retrievable": 0,
+                "not_in_deals": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "providers": {
+      "f02639429": "Milad",
+      "f03493414": "Dcent"
+    }
+  },
+  "error_analysis": {
+    "scope": "active_deals_only",
+    "overview": {
+      "total_500_errors": 216856,
+      "cids_with_any_500_error": 187155,
+      "cids_all_providers_failed": 179341,
+      "percentage_of_active_deal_cids": 22.09
+    },
+    "by_provider": {
+      "f02639429": {
+        "provider_name": "Milad",
+        "total_500_errors": 33171,
+        "categories": {
+          "multihash_not_found": 32570,
+          "root_load_failure": 510,
+          "connection_error": 91
+        },
+        "top_patterns": [
+          {
+            "pattern": "failed to load root node: failed to load root CID: getting pieces containing cid <CID>: multihash <HASH>: not found",
+            "count": 32460,
+            "percentage": 97.9
+          },
+          {
+            "pattern": "failed to load root node: failed to load root CID: 1 error occurred:\n\t* reading data for block <CID> from reader for piece <PIECE_CID>: unexpected EOF",
+            "count": 107,
+            "percentage": 0.3
+          },
+          {
+            "pattern": "failed to load root node: failed to load root CID: 1 error occurred:\n\t* getting piece reader: context canceled",
+            "count": 69,
+            "percentage": 0.2
+          },
+          {
+            "pattern": "failed to load root node: failed to load root CID: 1 error occurred:\n\t* getting piece reader: failed to get piece reader from sector or piece park: failed to query parked_pieces and parked_piece_refs ...",
+            "count": 43,
+            "percentage": 0.1
+          },
+          {
+            "pattern": "failed to load root node: failed to load root CID: 1 error occurred:\n\t* reading data for block <CID> from reader for piece <PIECE_CID>: malformed car; header is bigger than util.MaxAllowedSectionSize",
+            "count": 21,
+            "percentage": 0.1
+          }
+        ]
+      },
+      "f03493414": {
+        "provider_name": "Dcent",
+        "total_500_errors": 183685,
+        "categories": {
+          "root_load_failure": 180011,
+          "connection_error": 3674
+        },
+        "top_patterns": [
+          {
+            "pattern": "failed to load root node: failed to load root CID: ipld: could not find node",
+            "count": 175745,
+            "percentage": 95.7
+          },
+          {
+            "pattern": "failed to load root node: failed to load root CID: 1 error occurred:\n\t* getting piece reader: 1 error occurred:\n\t* getting reader over sector 25747: sector is not unsealed",
+            "count": 330,
+            "percentage": 0.2
+          },
+          {
+            "pattern": "failed to load root node: failed to load root CID: 1 error occurred:\n\t* getting piece reader: 1 error occurred:\n\t* getting reader over sector 25942: sector is not unsealed",
+            "count": 318,
+            "percentage": 0.2
+          },
+          {
+            "pattern": "failed to load root node: failed to load root CID: 1 error occurred:\n\t* getting piece reader: 1 error occurred:\n\t* getting reader over sector 26375: sector is not unsealed",
+            "count": 312,
+            "percentage": 0.2
+          },
+          {
+            "pattern": "failed to load root node: failed to load root CID: 1 error occurred:\n\t* getting piece reader: 1 error occurred:\n\t* getting reader over sector 25828: sector is not unsealed",
+            "count": 309,
+            "percentage": 0.2
+          }
+        ]
+      }
+    },
+    "by_preparation": {
+      "1": {
+        "total_500_errors": 4755,
+        "categories": {
+          "root_load_failure": 3891,
+          "multihash_not_found": 864
+        }
+      },
+      "2": {
+        "total_500_errors": 93513,
+        "categories": {
+          "root_load_failure": 61731,
+          "multihash_not_found": 31691,
+          "connection_error": 91
+        }
+      },
+      "3": {
+        "total_500_errors": 108469,
+        "categories": {
+          "root_load_failure": 108454,
+          "multihash_not_found": 15
+        }
+      },
+      "7": {
+        "total_500_errors": 10119,
+        "categories": {
+          "root_load_failure": 6445,
+          "connection_error": 3674
+        }
+      }
+    },
+    "cross_provider_analysis": {
+      "cids_with_multiple_providers": 37515,
+      "all_providers_fail": 29701,
+      "some_providers_fail": 7814,
+      "all_fail_characteristics": {
+        "top_category_combinations": [
+          {
+            "categories": {
+              "Milad": "multihash_not_found",
+              "Dcent": "root_load_failure"
+            },
+            "count": 29689,
+            "percentage": 100.0
+          },
+          {
+            "categories": {
+              "Milad": "connection_error",
+              "Dcent": "root_load_failure"
+            },
+            "count": 11,
+            "percentage": 0.0
+          },
+          {
+            "categories": {
+              "Milad": "root_load_failure",
+              "Dcent": "root_load_failure"
+            },
+            "count": 1,
+            "percentage": 0.0
+          }
+        ],
+        "by_preparation": {
+          "2": 29686,
+          "3": 15
+        },
+        "by_filetype": {
+          "h5": 29700,
+          "png": 1
+        },
+        "by_filesize_bucket": {
+          "0-1MB": 1,
+          "1GB+": 29700
+        }
+      },
+      "some_fail_characteristics": {
+        "by_preparation": {
+          "1": 4755,
+          "2": 3059
+        },
+        "by_filetype": {
+          "png": 3300,
+          "xml": 2491,
+          "h5": 2023
+        },
+        "by_filesize_bucket": {
+          "0-1MB": 5791,
+          "1-10MB": 29,
+          "10-100MB": 198,
+          "100MB-1GB": 1314,
+          "1GB+": 482
+        }
+      }
+    },
+    "file_characteristics_by_category": {
+      "connection_error": {
+        "total_errors": 3765,
+        "by_filetype": {
+          "h5": 3692,
+          "png": 39,
+          "xml": 34
+        },
+        "by_filesize_bucket": {
+          "0-1MB": 75,
+          "1-10MB": 50,
+          "10-100MB": 955,
+          "100MB-1GB": 2674,
+          "1GB+": 11
+        }
+      },
+      "multihash_not_found": {
+        "total_errors": 32570,
+        "by_filetype": {
+          "h5": 30028,
+          "png": 1632,
+          "xml": 910
+        },
+        "by_filesize_bucket": {
+          "0-1MB": 2542,
+          "1-10MB": 4,
+          "10-100MB": 16,
+          "100MB-1GB": 201,
+          "1GB+": 29807
+        }
+      },
+      "root_load_failure": {
+        "total_errors": 180521,
+        "by_filetype": {
+          "h5": 130638,
+          "png": 24979,
+          "xml": 24903,
+          "json": 1
+        },
+        "by_filesize_bucket": {
+          "0-1MB": 49884,
+          "1-10MB": 260,
+          "10-100MB": 2319,
+          "100MB-1GB": 13527,
+          "1GB+": 114531
+        }
+      }
+    }
+  }
+}
