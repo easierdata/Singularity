@@ -22,10 +22,6 @@ This project helps you:
 ### 2. Setup Environment
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd sealed-data-exploration
-
 # Create and activate virtual environment
 python -m venv .venv
 .venv\Scripts\activate  # Windows
