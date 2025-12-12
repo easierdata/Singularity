@@ -45,6 +45,8 @@ python scripts/extract_cids_with_status_errors.py
 python scripts/pieces_without_deals.py --storage-provider f02639429
 ```
 
+Visual context for the order of operations to run the scripts; see the [Workflow Diagrams](#workflow-diagrams) section below, as it lays out the data dependencies needed at each step in running the full Retrieval Check Analysis pipeline.
+
 ### Prerequisites
 
 - Python 3.10+
