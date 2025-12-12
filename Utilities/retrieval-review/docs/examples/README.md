@@ -1,6 +1,6 @@
 # Example Outputs
 
-This directory contains outputs from running the complete data-retrieval check analysis pipeline, demonstrating what the toolkit produces.
+This directory contains outputs from running the complete data-retrieval check analysis pipeline, demonstrating what the toolkit produces. See the [scripts overview quick-start section](../SCRIPTS_OVERVIEW.md#quick-start) for more details.
 
 ## Summary Reports
 
