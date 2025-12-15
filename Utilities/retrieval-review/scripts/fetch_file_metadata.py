@@ -25,7 +25,7 @@ import aiohttp
 import pandas as pd
 import requests
 
-from config import get_api_endpoint, get_path, load_config, normalize_api_endpoint
+from config import get_api_endpoint, get_path, load_config, normalize_api_endpoint, get_fetch_defaults
 
 # Default concurrency limit for async requests
 DEFAULT_CONCURRENCY = 20
@@ -394,8 +394,13 @@ Examples:
         base_url = normalize_api_endpoint(args.endpoint)
         logger.info(f"Using CLI-specified endpoint: {base_url}")
     else:
-        base_url = get_api_endpoint(config)
+        # config_endpoint = get_api_endpoint(config)
+        base_url = normalize_api_endpoint(get_api_endpoint(config))
         logger.info(f"Using config endpoint: {base_url}")
+
+    # Get fetch defaults: CLI override > config
+    fetch_defaults = get_fetch_defaults(config)
+    concurrency = args.concurrency or fetch_defaults.get("concurrency", DEFAULT_CONCURRENCY)
 
     # Fetch all preparations
     logger.info("Fetching preparations list...")
@@ -430,7 +435,7 @@ Examples:
             continue
 
         file_details_df, source_name = process_preparation(
-            base_url, prep_id, prep_name, args.concurrency
+            base_url, prep_id, prep_name, concurrency
         )
 
         if file_details_df.empty:
