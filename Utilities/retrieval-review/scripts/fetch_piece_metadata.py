@@ -212,7 +212,7 @@ Examples:
         base_url = normalize_api_endpoint(args.endpoint)
         logger.info(f"Using CLI-specified endpoint: {base_url}")
     else:
-        base_url = get_api_endpoint(config)
+        base_url = normalize_api_endpoint(get_api_endpoint(config))
         logger.info(f"Using config endpoint: {base_url}")
 
     # Fetch all preparations
