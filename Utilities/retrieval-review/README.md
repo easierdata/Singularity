@@ -1,4 +1,4 @@
-# Sealed Data Exploration
+# Retrieval Review
 
 A toolkit for analyzing Filecoin storage deal retrieval performance. Fetches deal metadata from a Singularity API, checks unsealed data retrieval status against storage providers, and generates comprehensive reports on data availability.
 
