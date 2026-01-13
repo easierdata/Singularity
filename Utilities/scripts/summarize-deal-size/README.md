@@ -5,6 +5,7 @@ Scripts to automate the process of summarizing the total size of sealed deals on
 ## PowerShell (Windows)
 
 **Usage:**
+
 ```powershell
 .\get_deal_size.ps1 -ProviderID "f02639429" -CutoffDate "2026-01-01"
 ```
@@ -15,10 +16,12 @@ Scripts to automate the process of summarizing the total size of sealed deals on
 Requires `curl`, `awk`, and `jq`.
 
 > **Note:** You must install [`jq`](https://jqlang.github.io/jq/) to run this script.
-> *   Ubuntu/Debian: `sudo apt install jq`
-> *   MacOS: `brew install jq`
+>
+> * Ubuntu/Debian: `sudo apt install jq`
+> * MacOS: `brew install jq`
 
 **Usage:**
+
 ```bash
 chmod +x get_deal_size.sh
 ./get_deal_size.sh -p "f02639429" -d "2026-01-01"
