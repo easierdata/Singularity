@@ -4,7 +4,8 @@ ARG SINGULARITY_GHCR_TAG=main
 FROM ghcr.io/data-preservation-programs/singularity:${SINGULARITY_GHCR_TAG} AS singularity-source
 
 # Final stage: Debian slim for glibc compatibility
-FROM debian:bullseye-slim
+# Latest singularity release uses debian bookworm as base, so we will too
+FROM debian:bookworm-slim
 
 # Switch to root for installing dependencies and setting up the environment
 # USER root
