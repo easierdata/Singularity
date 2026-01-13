@@ -87,6 +87,26 @@ Post-processed CID-level retrieval results. Each record represents an individual
 | `active_deal_providers` | string[] | Providers with active deals |
 | `storage_provider_retrieval_check` | object | Retrieval check results (same structure as piece-level, but `retrieval_type` = "cid") |
 
+### Retrieval Check Object
+
+The `storage_provider_retrieval_check` object is keyed by provider ID. Each value contains:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `provider_name` | string | Human-readable provider name |
+| `provider_id` | string | Provider ID (e.g., "f02639429") |
+| `retrieval_type` | string | Always "piece" for this file |
+| `url` | string | Retrieval endpoint URL |
+| `timestamp` | string | ISO 8601 timestamp of check |
+| `status` | string | "available", "unavailable", or "error" |
+| `status_code` | integer | HTTP status code (200, 404, 500, etc.) |
+| `content_length` | integer/null | Response content length in bytes |
+| `error_message` | string/null | Error message if status != "available" |
+| `response_body` | string/null | Response body (if applicable) |
+| `response_time_ms` | integer | Response time in milliseconds |
+| `deal_state` | string | "active", "expired", etc. |
+| `deal_id` | string | Deal identifier |
+
 ---
 
 ## 3. Deals Database

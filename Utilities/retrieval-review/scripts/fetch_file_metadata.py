@@ -378,8 +378,8 @@ Examples:
     parser.add_argument(
         "--concurrency", "-c",
         type=int,
-        default=DEFAULT_CONCURRENCY,
-        help=f"Maximum number of concurrent API requests (default: {DEFAULT_CONCURRENCY})"
+        default=None,
+        help=f"Maximum number of concurrent API requests (default: from config or {DEFAULT_CONCURRENCY})"
     )
 
     args = parser.parse_args()
