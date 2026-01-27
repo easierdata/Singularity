@@ -154,7 +154,7 @@ echo -e "\033[36mProcessing data and generating CSV: $OUTPUT_FILE\033[0m"
 
 # 4. Join and Generate CSV
 # Use jq with --slurpfile for deals but pipe the pieces to reduce memory overhead
-HEADER="PreparationName,PreparationID,PrepCreatedAt,PieceCID,FileSize,NumOfFiles,RootCID,PieceType,DealID,ProposalID,StorageProvider,ClientID,State,StartEpoch,StartDateTime,EndEpoch,EndDateTime"
+HEADER="PreparationName,PreparationID,PrepCreatedAt,PieceCID,PieceSize,FileSize,NumOfFiles,RootCID,PieceType,DealID,ProposalID,StorageProvider,ClientID,State,StartEpoch,StartDateTime,EndEpoch,EndDateTime"
 echo "$HEADER" > "$OUTPUT_FILE"
 
 echo -e "\033[36mStep 2/3: Processing JSON data (this may take a minute for large datasets)...\033[0m"
@@ -183,6 +183,7 @@ jq -r --slurpfile deals "$DEAL_FILE" \
         $prepId,
         $prepCreated,
         $piece.pieceCid,
+        $piece.pieceSize,
         $piece.fileSize,
         $piece.numOfFiles,
         $piece.rootCid,
@@ -203,4 +204,11 @@ echo -e "\033[32mDone! CSV saved to $OUTPUT_FILE\033[0m"
 TOTAL_PIECES_PREP=$(jq '[.[] | .pieces[]] | length' "$PIECE_FILE")
 DEAL_COUNT=$(tail -n +2 "$OUTPUT_FILE" | grep -v ',"",$\|,"",$*' | wc -l)
 PIECE_COUNT=$(tail -n +2 "$OUTPUT_FILE" | wc -l)
-echo "Total Rows: $PIECE_COUNT (Matched Deals: $DEAL_COUNT | Total Pieces in Preparation: $TOTAL_PIECES_PREP)"
+
+# Calculate totals from columns 5 (PieceSize) and 6 (FileSize) of the CSV
+TOTAL_PIECE_SIZE=$(awk -F',' 'NR>1 {gsub(/"/, "", $5); sum+=$5} END {print sum}' "$OUTPUT_FILE")
+TOTAL_FILE_SIZE=$(awk -F',' 'NR>1 {gsub(/"/, "", $6); sum+=$6} END {print sum}' "$OUTPUT_FILE")
+
+TOTAL_PIECE_TIB=$(echo "scale=3; $TOTAL_PIECE_SIZE / (1024^4)" | bc 2>/dev/null || awk "BEGIN {printf \"%.3f\", $TOTAL_PIECE_SIZE / 1099511627776}")
+TOTAL_FILE_TIB=$(echo "scale=3; $TOTAL_FILE_SIZE / (1024^4)" | bc 2>/dev/null || awk "BEGIN {printf \"%.3f\", $TOTAL_FILE_SIZE / 1099511627776}")
+echo "Total Rows: $PIECE_COUNT (Matched Deals: $DEAL_COUNT | Total Pieces in Prep: $TOTAL_PIECES_PREP | Matched Piece Size: $TOTAL_PIECE_TIB TiB | Matched File Size: $TOTAL_FILE_TIB TiB)"

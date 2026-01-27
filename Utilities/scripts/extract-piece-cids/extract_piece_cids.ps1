@@ -172,6 +172,7 @@ try {
                         PreparationID    = $PreparationID
                         PrepCreatedAt    = $PrepCreated
                         PieceCID         = $PieceCid
+                        PieceSize        = $Piece.pieceSize
                         FileSize         = $Piece.fileSize
                         NumOfFiles       = $Piece.numOfFiles
                         RootCID          = $Piece.rootCid
@@ -196,8 +197,12 @@ try {
     Write-Host "Done! CSV saved to $OutputFile" -ForegroundColor Green
     
     $TotalPiecesPrep = ($PieceResponse.pieces | Measure-Object).Count
+    $TotalPieceSize = ($Results | Measure-Object -Property PieceSize -Sum).Sum
+    $TotalFileSize = ($Results | Measure-Object -Property FileSize -Sum).Sum
+    $TotalPieceTiB = [Math]::Round($TotalPieceSize / 1TB, 3)
+    $TotalFileTiB = [Math]::Round($TotalFileSize / 1TB, 3)
     $MatchedDeals = ($Results | Where-Object { -not [string]::IsNullOrWhiteSpace($_.DealID) }).Count
-    Write-Host "Total Rows: $($Results.Count) (Matched Deals: $MatchedDeals | Total Pieces in Preparation: $TotalPiecesPrep)" -ForegroundColor Yellow
+    Write-Host "Total Rows: $($Results.Count) (Matched Deals: $MatchedDeals | Total Pieces in Prep: $TotalPiecesPrep | Matched Piece Size: $TotalPieceTiB TiB | Matched File Size: $TotalFileTiB TiB)" -ForegroundColor Yellow
 }
 catch {
     Write-Error "An error occurred: $_"
