@@ -12,3 +12,6 @@ Utilities/sync-tool
 
 # Ignore the downloads directory in car-retrieval
 Utilities/scripts/car-retrieval/downloads
+
+# Ignore doc/plans directory
+docs/plans
